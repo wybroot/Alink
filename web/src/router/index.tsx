@@ -23,7 +23,7 @@ const DDNSPage = lazy(() => import('@admin/pages/DDNS'));
 const AlertRecordListPage = lazy(() => import('@admin/pages/AlertRecords'));
 
 const LoadingFallback = () => (
-    <div className="flex h-[75vh] w-full items-center justify-center text-gray-500 dark:text-cyan-300">
+    <div className="flex h-[75vh] w-full items-center justify-center text-gray-500 dark:text-violet-300">
         页面加载中...
     </div>
 );

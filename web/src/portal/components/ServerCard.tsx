@@ -57,7 +57,7 @@ const getTrafficProgressColor = (percent: number) => {
     if (percent >= 100) return 'bg-red-500';
     if (percent >= 90) return 'bg-orange-500';
     if (percent >= 80) return 'bg-yellow-500';
-    return 'bg-emerald-500';
+    return 'bg-lime-500';
 };
 
 const ServerCard: FC<ServerCardProps> = ({server}) => {
@@ -85,15 +85,15 @@ const ServerCard: FC<ServerCardProps> = ({server}) => {
                     <div className="flex items-start justify-between gap-3">
                         <div className="flex-1 min-w-0">
                             <div className={cn(
-                                'font-bold text-slate-800 dark:text-cyan-100 font-mono text-base truncate',
+                                'font-bold text-slate-800 dark:text-violet-100 font-mono text-base truncate',
                                 isExpired(server.expireTime) ? 'text-red-600 dark:text-red-400' : ''
                             )}>
                                 {server.name || server.hostname}
                             </div>
                             <div
-                                className="flex items-center gap-2 text-xs text-gray-600 dark:text-cyan-500 mt-1 font-mono uppercase">
+                                className="flex items-center gap-2 text-xs text-gray-600 dark:text-violet-500 mt-1 font-mono uppercase">
                                 <span>{server.os}</span>
-                                <span className="w-px h-2 bg-gray-400 dark:bg-cyan-800"></span>
+                                <span className="w-px h-2 bg-gray-400 dark:bg-violet-800"></span>
                                 <span>{server.arch}</span>
                             </div>
                         </div>
@@ -102,14 +102,14 @@ const ServerCard: FC<ServerCardProps> = ({server}) => {
                                 {server.tags.slice(0, 2).map(tag => (
                                     <span
                                         key={tag}
-                                        className="px-1.5 py-0.5 bg-gray-100 dark:bg-cyan-900/40 text-gray-700 dark:text-cyan-500 border border-gray-300 dark:border-cyan-700/50 text-xs font-mono rounded-sm whitespace-nowrap"
+                                        className="px-1.5 py-0.5 bg-gray-100 dark:bg-violet-900/40 text-gray-700 dark:text-violet-500 border border-gray-300 dark:border-violet-700/50 text-xs font-mono rounded-sm whitespace-nowrap"
                                     >
                                 #{tag}
                             </span>
                                 ))}
                                 {server.tags.length > 2 && (
                                     <span
-                                        className="px-1.5 py-0.5 bg-gray-100 dark:bg-cyan-900/40 text-gray-700 dark:text-cyan-500 border border-gray-300 dark:border-cyan-700/50 text-xs font-mono rounded-sm">
+                                        className="px-1.5 py-0.5 bg-gray-100 dark:bg-violet-900/40 text-gray-700 dark:text-violet-500 border border-gray-300 dark:border-violet-700/50 text-xs font-mono rounded-sm">
                                 +{server.tags.length - 2}
                             </span>
                                 )}
@@ -119,12 +119,12 @@ const ServerCard: FC<ServerCardProps> = ({server}) => {
 
                     {isOnline && server.metrics?.host && (
                         <div className="flex items-center gap-2 text-xs font-mono mt-1.5">
-                            <div className="flex items-center gap-1 text-gray-500 dark:text-cyan-500">
+                            <div className="flex items-center gap-1 text-gray-500 dark:text-violet-500">
                                 <Clock className="w-3 h-3"/>
                                 <span>{formatUptime(server.metrics.host.uptime)}</span>
                             </div>
-                            <span className="w-px h-2 bg-gray-400 dark:bg-cyan-800"></span>
-                            <div className="flex items-center gap-1 text-gray-500 dark:text-cyan-500">
+                            <span className="w-px h-2 bg-gray-400 dark:bg-violet-800"></span>
+                            <div className="flex items-center gap-1 text-gray-500 dark:text-violet-500">
                                 <Activity className="w-3 h-3"/>
                                 <span>{server.metrics.host.procs} 进程</span>
                             </div>
@@ -139,21 +139,21 @@ const ServerCard: FC<ServerCardProps> = ({server}) => {
                                 label="CPU"
                                 icon={Cpu}
                                 subtext={server.metrics?.cpu ? `${server.metrics.cpu.physicalCores}核` : null}
-                                color="bg-blue-500"
+                                color="bg-indigo-500"
                             />
                             <CompactResourceBar
                                 value={memoryUsage}
                                 label="RAM"
                                 icon={MemoryStick}
                                 subtext={`${formatBytes(memoryUsed, 0)}/${formatBytes(memoryTotal, 0)}`}
-                                color="bg-purple-500"
+                                color="bg-fuchsia-500"
                             />
                             <CompactResourceBar
                                 value={diskUsage}
                                 label="DSK"
                                 icon={HardDrive}
                                 subtext={`${formatBytes(diskUsed, 0)}/${formatBytes(diskTotal, 0)}`}
-                                color="bg-emerald-500"
+                                color="bg-lime-500"
                             />
                             {temperatures.length > 0 && (
                                 <div className="flex items-center gap-2 mt-1 text-xs font-mono pt-1 flex-wrap">
@@ -161,9 +161,9 @@ const ServerCard: FC<ServerCardProps> = ({server}) => {
                                     {temperatures.map((temp, index) => (
                                         <span key={index} className="flex items-center gap-1">
                                         <span className="text-orange-400">{temp.temperature?.toFixed(1)}°C</span>
-                                        <span className="text-gray-500 dark:text-cyan-500">{temp.type}</span>
+                                        <span className="text-gray-500 dark:text-violet-500">{temp.type}</span>
                                             {index < temperatures.length - 1 &&
-                                                <span className="text-gray-400 dark:text-cyan-900">|</span>}
+                                                <span className="text-gray-400 dark:text-violet-900">|</span>}
                                     </span>
                                     ))}
                                 </div>
@@ -177,14 +177,14 @@ const ServerCard: FC<ServerCardProps> = ({server}) => {
                     )}
 
                     {/* 网络和流量 */}
-                    <div className="pt-2 border-t border-slate-200 dark:border-cyan-900/30 space-y-2">
+                    <div className="pt-2 border-t border-slate-200 dark:border-violet-900/30 space-y-2">
                         <div className="flex items-center justify-between">
                             <div className="flex gap-3 text-xs font-mono">
-                            <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400/80">
+                            <span className="flex items-center gap-1 text-lime-600 dark:text-lime-400/80">
                                 <ArrowDown className="w-3 h-3"/>
                                 {formatSpeed(download)}
                             </span>
-                                <span className="flex items-center gap-1 text-blue-600 dark:text-blue-400/80">
+                                <span className="flex items-center gap-1 text-indigo-600 dark:text-indigo-400/80">
                                 <ArrowUp className="w-3 h-3"/>
                                     {formatSpeed(upload)}
                             </span>
@@ -192,7 +192,7 @@ const ServerCard: FC<ServerCardProps> = ({server}) => {
                             {server.expireTime > 0 && (
                                 <div
                                     className={cn(
-                                        `text-xs font-mono flex items-center gap-1 text-gray-600 dark:text-cyan-500`,
+                                        `text-xs font-mono flex items-center gap-1 text-gray-600 dark:text-violet-500`,
                                         // 剩余时间小于 30 天时显示为红色
                                         isExpired(server.expireTime) ? 'text-red-600 dark:text-red-400' : ''
                                     )}>
@@ -204,53 +204,53 @@ const ServerCard: FC<ServerCardProps> = ({server}) => {
                         {isOnline && netConn && (
                             <div className="flex gap-3 text-xs font-mono">
                             <span className="flex items-center gap-1">
-                                <Network className="w-3 h-3 text-emerald-600 dark:text-emerald-400"/>
+                                <Network className="w-3 h-3 text-lime-600 dark:text-lime-400"/>
                                 <span
-                                    className="text-emerald-600 dark:text-emerald-400">{netConn.established || 0}</span>
-                                <span className="text-gray-600 dark:text-cyan-500">ESTABLISHED</span>
+                                    className="text-lime-600 dark:text-lime-400">{netConn.established || 0}</span>
+                                <span className="text-gray-600 dark:text-violet-500">ESTABLISHED</span>
                             </span>
                                 <span className="flex items-center gap-1">
-                                <Network className="w-3 h-3 text-blue-600 dark:text-blue-400"/>
-                                <span className="text-blue-600 dark:text-blue-400">{netConn.listen || 0}</span>
-                                <span className="text-gray-600 dark:text-cyan-500">LISTEN</span>
+                                <Network className="w-3 h-3 text-indigo-600 dark:text-indigo-400"/>
+                                <span className="text-indigo-600 dark:text-indigo-400">{netConn.listen || 0}</span>
+                                <span className="text-gray-600 dark:text-violet-500">LISTEN</span>
                             </span>
                                 <span className="flex items-center gap-1">
                                 <Network className="w-3 h-3 text-rose-600 dark:text-rose-400"/>
                                 <span className="text-rose-600 dark:text-rose-400">{netConn.closeWait || 0}</span>
-                                <span className="text-gray-600 dark:text-cyan-500">CLOSE_WAIT</span>
+                                <span className="text-gray-600 dark:text-violet-500">CLOSE_WAIT</span>
                             </span>
                             </div>
                         )}
                         {traffic?.enabled && (
-                            <div className="pt-2 border-t border-slate-200 dark:border-cyan-900/30 space-y-1.5">
-                                <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-cyan-600 font-mono">
+                            <div className="pt-2 border-t border-slate-200 dark:border-violet-900/30 space-y-1.5">
+                                <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-violet-600 font-mono">
                                     <Activity className="w-3 h-3"/>
                                     <span>{traffic.type === 'recv' ? '进站' : traffic.type === 'send' ? '出站' : '全部'}流量</span>
                                 </div>
                                 {traffic.limit > 0 ? (
                                     <>
                                         <div className="flex items-baseline justify-between">
-                                            <span className="text-xs text-gray-600 dark:text-cyan-500 font-mono">
+                                            <span className="text-xs text-gray-600 dark:text-violet-500 font-mono">
                                                 {formatBytes(traffic.used, 1)} / {formatBytes(traffic.limit, 1)}
                                             </span>
-                                            <span className="text-xs font-bold text-gray-700 dark:text-cyan-400 font-mono">
+                                            <span className="text-xs font-bold text-gray-700 dark:text-violet-400 font-mono">
                                                 {trafficUsagePercent.toFixed(1)}%
                                             </span>
                                         </div>
-                                        <div className="h-1.5 bg-slate-200 dark:bg-cyan-900/50 rounded-full overflow-hidden">
+                                        <div className="h-1.5 bg-slate-200 dark:bg-violet-900/50 rounded-full overflow-hidden">
                                             <div
                                                 className={`h-full transition-all ${getTrafficProgressColor(trafficUsagePercent)}`}
                                                 style={{width: `${trafficUsagePercent}%`}}
                                             />
                                         </div>
-                                        <div className="text-xs text-gray-500 dark:text-cyan-600 font-mono">
+                                        <div className="text-xs text-gray-500 dark:text-violet-600 font-mono">
                                             重置日期: 每月 {traffic.resetDay} 号
                                         </div>
                                     </>
                                 ) : (
-                                    <div className="text-xs text-gray-500 dark:text-cyan-600 font-mono">
+                                    <div className="text-xs text-gray-500 dark:text-violet-600 font-mono">
                                         已使用: {formatBytes(traffic.used, 1)}
-                                        <div className="text-xs text-gray-400 dark:text-cyan-700 mt-1">仅统计模式</div>
+                                        <div className="text-xs text-gray-400 dark:text-violet-700 mt-1">仅统计模式</div>
                                     </div>
                                 )}
                             </div>

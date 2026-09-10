@@ -194,10 +194,10 @@ const AdminLayout = () => {
             }}
         >
             <AntApp>
-                <div className="min-h-screen bg-white dark:bg-[#141414]">
+                <div className="command-shell min-h-screen bg-white dark:text-slate-100">
                     {/* 顶部导航栏 */}
                     <header
-                        className="fixed top-0 left-0 right-0 z-[300] h-14 border-b border-white/20 dark:border-white/10 bg-[#060b16]/95 dark:bg-[#141414]/95 backdrop-blur">
+                        className="fixed top-0 left-0 right-0 z-[300] h-14 border-b border-slate-200 dark:border-violet-300/15 bg-[#0c071d]/95 shadow-[0_8px_36px_rgba(0,0,0,0.24)] backdrop-blur-xl">
                         <div className="flex h-full items-center justify-between px-4">
                             <div className="flex items-center gap-3 text-white">
                                 <div className="flex items-center justify-center">
@@ -221,7 +221,7 @@ const AdminLayout = () => {
                                     type="text"
                                     icon={<Eye className="h-4 w-4" strokeWidth={2}/>}
                                     onClick={() => window.open('/', '_blank')}
-                                    className="hidden !h-9 !items-center !rounded-full !px-3 !text-xs !text-white/80 hover:!bg-white/10 sm:!inline-flex"
+                                    className="hidden !h-9 !items-center !rounded-md !px-3 !text-xs !text-white/80 hover:!bg-violet-400/10 sm:!inline-flex"
                                 >
                                     公共页面
                                 </Button>
@@ -229,7 +229,7 @@ const AdminLayout = () => {
                                     type="text"
                                     icon={<BookOpen className="h-4 w-4" strokeWidth={2}/>}
                                     onClick={() => navigate('/admin/agents-install/one-click')}
-                                    className="!h-9 !items-center !rounded-full !px-3 !text-xs !text-white hover:!bg-blue-500/10"
+                                    className="!h-9 !items-center !rounded-md !px-3 !text-xs !text-white hover:!bg-violet-400/10"
                                 >
                                     部署指南
                                 </Button>
@@ -239,7 +239,7 @@ const AdminLayout = () => {
                                     ref={themeButtonRef}
                                     type="button"
                                     onClick={toggleTheme}
-                                    className="inline-flex h-9 items-center rounded-full p-2 text-white/80 hover:bg-white/10 transition-all"
+                                    className="inline-flex h-9 items-center rounded-md p-2 text-white/80 hover:bg-violet-400/10 transition-all"
                                     title={appliedTheme === 'dark' ? "切换到浅色模式" : "切换到暗黑模式"}
                                 >
                                     {appliedTheme === 'dark' ? (
@@ -252,7 +252,7 @@ const AdminLayout = () => {
                                 <Dropdown menu={{items: userMenuItems}} placement="bottomRight" trigger={['click']}>
                                     <button
                                         type="button"
-                                        className="flex cursor-pointer items-center gap-2 rounded-full border border-white/20 bg-white/5 px-2.5 py-1 text-left text-white transition-colors hover:border-white/40"
+                                        className="flex cursor-pointer items-center gap-2 rounded-md border border-violet-100/15 bg-violet-400/5 px-2.5 py-1 text-left text-white transition-colors hover:border-violet-200/35"
                                     >
                                         <Avatar
                                             size={24}
@@ -270,7 +270,7 @@ const AdminLayout = () => {
 
                     {/* 侧边栏 */}
                     <aside
-                        className="fixed left-0 z-[200] hidden h-screen overflow-hidden border-r border-white/60 dark:border-white/10 bg-white/90 dark:bg-[#141414]/90 shadow-sm backdrop-blur lg:block"
+                        className="fixed left-0 z-[200] hidden h-screen overflow-hidden border-r border-slate-200 dark:border-violet-300/15 bg-white/90 dark:bg-[#0c071d]/92 shadow-sm backdrop-blur-xl lg:block"
                         style={{
                             width: SIDEBAR_WIDTH,
                             paddingTop: HEADER_HEIGHT,
@@ -291,16 +291,16 @@ const AdminLayout = () => {
                                             type="button"
                                             onClick={() => handleNavigate(item)}
                                             className={cn(
-                                                'group relative flex w-full items-center gap-3 rounded-2xl px-3 py-2 text-sm transition-all cursor-pointer',
+                                                'group relative flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm transition-all cursor-pointer',
                                                 isActive
-                                                    ? 'bg-gradient-to-r from-blue-500/10 to-blue-500/5 text-blue-600 dark:text-blue-400 shadow-sm'
-                                                    : 'text-gray-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800'
+                                                    ? 'bg-gradient-to-r from-violet-400/20 to-indigo-500/5 text-indigo-600 dark:text-violet-200 shadow-[inset_3px_0_0_#8b5cf6]'
+                                                    : 'text-gray-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-violet-400/8'
                                             )}
                                         >
                                             <span
                                                 className={cn(
-                                                    'flex h-8 w-8 items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-gray-500 dark:text-slate-400 shadow-sm',
-                                                    isActive && 'bg-blue-600 dark:bg-blue-500 text-white'
+                                                    'flex h-8 w-8 items-center justify-center rounded-md bg-white dark:bg-slate-800 text-gray-500 dark:text-slate-400 shadow-sm',
+                                                    isActive && 'bg-indigo-600 dark:bg-violet-500 text-slate-950 command-beacon'
                                                 )}
                                             >
                                                 {item.icon}
@@ -308,7 +308,7 @@ const AdminLayout = () => {
                                             <span className="truncate font-medium">{item.label}</span>
                                             {isActive &&
                                                 <span
-                                                    className="ml-auto text-[10px] uppercase text-blue-500 dark:text-blue-400">当前</span>}
+                                                    className="ml-auto text-[10px] uppercase text-indigo-500 dark:text-indigo-400">当前</span>}
                                         </button>
                                     );
                                 })}
@@ -335,10 +335,10 @@ const AdminLayout = () => {
                     </aside>
 
                     {/* 主内容区 */}
-                    <div className="flex flex-col bg-white dark:bg-[#141414]"
+                    <div className="flex flex-col bg-white/80 dark:bg-transparent"
                          style={{paddingTop: HEADER_HEIGHT, minHeight: `calc(100vh - ${HEADER_HEIGHT}px)`}}>
                         {/* 内容区域 */}
-                        <main className="flex-grow bg-white dark:bg-[#141414] pb-20 pt-5 lg:ml-[240px] lg:pb-10">
+                        <main className="flex-grow bg-white/80 dark:bg-transparent pb-20 pt-5 lg:ml-[240px] lg:pb-10">
                             <div className="w-full px-4 pb-4 lg:px-8">
                                 <Outlet/>
                             </div>
@@ -347,7 +347,7 @@ const AdminLayout = () => {
 
                     {/* 移动端底部导航栏 */}
                     <nav
-                        className="fixed bottom-0 left-0 right-0 z-[300] border-t border-gray-200 dark:border-white/10 bg-white/95 dark:bg-[#141414]/95 backdrop-blur lg:hidden">
+                        className="fixed bottom-0 left-0 right-0 z-[300] border-t border-gray-200 dark:border-violet-300/15 bg-white/95 dark:bg-[#0c071d]/95 backdrop-blur-xl lg:hidden">
                         <div className="grid h-16 grid-cols-5">
                             {menuItems.map((item) => {
                                 const isActive = location.pathname.startsWith(item.path);
@@ -358,11 +358,11 @@ const AdminLayout = () => {
                                         onClick={() => handleNavigate(item)}
                                         className={cn(
                                             'flex flex-col items-center justify-center gap-1 text-xs font-medium',
-                                            isActive ? 'text-blue-600 dark:text-blue-400' : 'text-gray-500 dark:text-slate-400'
+                                            isActive ? 'text-indigo-600 dark:text-indigo-400' : 'text-gray-500 dark:text-slate-400'
                                         )}
                                     >
                                     <span
-                                        className={cn('rounded-full p-2', isActive ? 'bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400' : 'text-current')}>
+                                        className={cn('rounded-full p-2', isActive ? 'bg-indigo-50 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400' : 'text-current')}>
                                         {item.icon}
                                     </span>
                                         <span>{item.label}</span>

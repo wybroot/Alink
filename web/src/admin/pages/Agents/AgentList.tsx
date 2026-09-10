@@ -500,7 +500,7 @@ const AgentList = () => {
                 ]}
             />
 
-            <div className="bg-white dark:bg-[#1c1c21] rounded-2xl border border-gray-100 dark:border-white/5 shadow-sm p-4 sm:p-6 space-y-6">
+            <div className="command-panel command-panel--scan bg-white dark:bg-[#140b2b]/90 rounded-lg border border-gray-100 dark:border-violet-300/20 shadow-sm p-4 sm:p-6 space-y-6">
                 <div className="flex flex-col gap-4">
                     <Form form={searchForm} layout="inline" onFinish={handleSearch} className="!flex-wrap gap-y-4">
                         <Form.Item label="关键字" name="keyword">

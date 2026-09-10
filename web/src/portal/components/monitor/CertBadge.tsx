@@ -10,7 +10,7 @@ export const CertBadge = ({ expiryTime, daysLeft }: CertBadgeProps) => {
     if (!expiryTime || daysLeft === undefined) return null;
 
     const isExpired = daysLeft < 0;
-    let colorClass = "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 border-emerald-200 dark:border-emerald-500/20";
+    let colorClass = "text-lime-600 dark:text-lime-400 bg-lime-50 dark:bg-lime-500/10 border-lime-200 dark:border-lime-500/20";
 
     if (isExpired) {
         colorClass = "text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-500/10 border-rose-200 dark:border-rose-500/20";

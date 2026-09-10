@@ -137,7 +137,7 @@ const AgentDetail = () => {
             <Card variant="outlined">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div className="flex items-center gap-4">
-                        <Activity size={32} className="text-blue-500"/>
+                        <Activity size={32} className="text-indigo-500"/>
                         <div>
                             <h2 className="text-xl font-semibold m-0">{agent.name || agent.hostname}</h2>
                             <Space className="mt-1">

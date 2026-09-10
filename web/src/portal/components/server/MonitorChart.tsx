@@ -25,43 +25,43 @@ const downsampleData = (data: any[], maxPoints: number): any[] => {
     if (!data || data.length === 0) return [];
     if (maxPoints < 2) maxPoints = 2;
     if (data.length <= maxPoints) return [...data];
-    
+
     const result: any[] = [data[0]]; // 保留第一个点
-    
+
     // 桶大小
     const bucketSize = (data.length - 2) / (maxPoints - 2);
-    
+
     for (let i = 0; i < maxPoints - 2; i++) {
         // 计算当前桶的范围
         const start = Math.floor((i + 0) * bucketSize) + 1;
         const end = Math.floor((i + 1) * bucketSize) + 1;
-        
+
         // 计算前一个点和后一个点
         const previousPoint = result[result.length - 1];
         const nextPoint = data[Math.min(end, data.length - 1)];
-        
+
         // 在桶中选择与前后点形成的三角形面积最大的点
         let maxArea = -1;
         let selectedPoint = data[start];
-        
+
         for (let j = start; j < end && j < data.length - 1; j++) {
             // 计算三角形面积
             const area = Math.abs(
                 (previousPoint.timestamp - nextPoint.timestamp) * (data[j].value - previousPoint.value) -
                 (previousPoint.timestamp - data[j].timestamp) * (nextPoint.value - previousPoint.value)
             );
-            
+
             if (area > maxArea) {
                 maxArea = area;
                 selectedPoint = data[j];
             }
         }
-        
+
         result.push(selectedPoint);
     }
-    
+
     result.push(data[data.length - 1]); // 保留最后一个点
-    
+
     return result;
 };
 
@@ -93,14 +93,14 @@ const getMaxDataPoints = (timeRange: string): number => {
 const generateColors = (count: number): string[] => {
     const colors: string[] = [];
     const hueStep = 360 / count; // 色相间隔
-    
+
     for (let i = 0; i < count; i++) {
         const hue = (i * hueStep) % 360;
         const saturation = 65 + (i % 3) * 10; // 65%, 75%, 85% 循环
         const lightness = 45 + (i % 2) * 10;  // 45%, 55% 循环
         colors.push(`hsl(${hue}, ${saturation}%, ${lightness}%)`);
     }
-    
+
     return colors;
 };
 
@@ -109,15 +109,15 @@ const generateColors = (count: number): string[] => {
  */
 const CustomLegend = ({ onClick, selectedMonitors, allMonitorKeys, colors, collapsed }: any) => {
     if (!allMonitorKeys || allMonitorKeys.length === 0) return null;
-    
+
     if (collapsed) return null;
-    
+
     return (
         <div className="flex flex-wrap justify-center gap-4 pt-4">
             {allMonitorKeys.map((monitorKey: string, index: number) => {
                 const isSelected = selectedMonitors.has(monitorKey);
                 const color = colors[index];
-                
+
                 return (
                     <div
                         key={monitorKey}
@@ -239,12 +239,12 @@ const MonitorChartImpl = ({agentId, timeRange, start, end, isLive}: MonitorChart
                 // 单点数据，只有精确匹配才返回
                 return data[0].timestamp === targetTime ? data[0].value : null;
             }
-            
+
             // 如果目标时间在数据范围外，返回 null（断开折线）
             if (targetTime < data[0].timestamp || targetTime > data[data.length - 1].timestamp) {
                 return null;
             }
-            
+
             // 二分查找找到 targetTime 前后两个点
             let left = 0, right = data.length - 1;
             while (right - left > 1) {
@@ -255,7 +255,7 @@ const MonitorChartImpl = ({agentId, timeRange, start, end, isLive}: MonitorChart
                     right = mid;
                 }
             }
-            
+
             // 线性插值
             const leftPoint = data[left];
             const rightPoint = data[right];
@@ -284,13 +284,13 @@ const MonitorChartImpl = ({agentId, timeRange, start, end, isLive}: MonitorChart
     // 点击图表区域切换选中状态
     const handleAreaClick = (data: any) => {
         if (!data || !data.dataKey) return;
-        
+
         const monitorKey = data.dataKey;
         const newSelected = new Set(selectedMonitors);
-        
+
         // 判断是否是全选状态
         const isAllSelected = selectedMonitors.size === allMonitorKeys.length;
-        
+
         if (isAllSelected) {
             // 全选状态下，点击某个 → 只选这一个
             setSelectedMonitors(new Set([monitorKey]));
@@ -309,10 +309,10 @@ const MonitorChartImpl = ({agentId, timeRange, start, end, isLive}: MonitorChart
     const handleLegendClick = (data: any) => {
         const monitorKey = data.value;
         const newSelected = new Set(selectedMonitors);
-        
+
         // 判断是否是全选状态
         const isAllSelected = selectedMonitors.size === allMonitorKeys.length;
-        
+
         if (isAllSelected) {
             // 全选状态下，点击某个 → 只选这一个
             setSelectedMonitors(new Set([monitorKey]));
@@ -361,16 +361,16 @@ const MonitorChartImpl = ({agentId, timeRange, start, end, isLive}: MonitorChart
                     {/* 使用提示和恢复按钮 */}
                     {allMonitorKeys.length > 1 && (
                         <div className="mb-3 flex items-center justify-between">
-                            <div className="text-xs text-gray-500 dark:text-cyan-600">
+                            <div className="text-xs text-gray-500 dark:text-violet-600">
                                 💡 点击图表线条或图例切换显示
                             </div>
                             {hasUnselected && (
                                 <button
                                     onClick={handleSelectAll}
                                     className="p-1.5 rounded
-                                        text-gray-500 dark:text-cyan-500 
-                                        hover:text-gray-700 dark:hover:text-cyan-400
-                                        hover:bg-gray-100 dark:hover:bg-cyan-900/30
+                                        text-gray-500 dark:text-violet-500
+                                        hover:text-gray-700 dark:hover:text-violet-400
+                                        hover:bg-gray-100 dark:hover:bg-violet-900/30
                                         transition-colors"
                                     title="恢复全选"
                                 >
@@ -379,7 +379,7 @@ const MonitorChartImpl = ({agentId, timeRange, start, end, isLive}: MonitorChart
                             )}
                         </div>
                     )}
-                    
+
                     <ResponsiveContainer width="100%" height={250}>
                         <AreaChart data={chartData}>
                             <defs>
@@ -395,7 +395,7 @@ const MonitorChartImpl = ({agentId, timeRange, start, end, isLive}: MonitorChart
                                 })}
                             </defs>
                             <CartesianGrid stroke="currentColor" strokeDasharray="4 4"
-                                           className="stroke-slate-200 dark:stroke-cyan-900/30"/>
+                                           className="stroke-slate-200 dark:stroke-violet-900/30"/>
                             <XAxis
                                 dataKey="timestamp"
                                 type="number"
@@ -405,12 +405,12 @@ const MonitorChartImpl = ({agentId, timeRange, start, end, isLive}: MonitorChart
                                 stroke="currentColor"
                                 angle={-15}
                                 textAnchor="end"
-                                className="text-xs text-gray-600 dark:text-cyan-500 font-mono"
+                                className="text-xs text-gray-600 dark:text-violet-500 font-mono"
                                 height={45}
                             />
                             <YAxis
                                 stroke="currentColor"
-                                className="stroke-gray-400 dark:stroke-cyan-600 text-xs"
+                                className="stroke-gray-400 dark:stroke-violet-600 text-xs"
                                 tickFormatter={(value) => `${value}ms`}
                             />
                             <Tooltip
@@ -438,7 +438,7 @@ const MonitorChartImpl = ({agentId, timeRange, start, end, isLive}: MonitorChart
                             })}
                         </AreaChart>
                     </ResponsiveContainer>
-                    
+
                     {/* 桌面端：直接显示图例 */}
                     {!isMobile && allMonitorKeys.length > 0 && (
                         <CustomLegend
@@ -448,13 +448,13 @@ const MonitorChartImpl = ({agentId, timeRange, start, end, isLive}: MonitorChart
                             colors={colors}
                         />
                     )}
-                    
+
                     {/* 移动端：可折叠图例 */}
                     {isMobile && allMonitorKeys.length > 0 && (
                         <div className="pt-4">
                             <button
                                 onClick={toggleLegend}
-                                className="w-full flex items-center justify-center gap-2 py-2 text-xs text-gray-600 dark:text-cyan-400 hover:text-gray-900 dark:hover:text-cyan-300"
+                                className="w-full flex items-center justify-center gap-2 py-2 text-xs text-gray-600 dark:text-violet-400 hover:text-gray-900 dark:hover:text-violet-300"
                             >
                                 <span>{legendCollapsed ? '显示图例' : '收起图例'}</span>
                                 {legendCollapsed ? <ChevronDown size={16} /> : <ChevronUp size={16} />}

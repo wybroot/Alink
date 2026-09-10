@@ -744,7 +744,7 @@ const AuditResultView = ({result}: AuditResultViewProps) => {
                                                 </span>
                                                 <button
                                                     onClick={() => setShowAllServices(!showAllServices)}
-                                                    className="text-blue-500 hover:text-blue-700 text-sm"
+                                                    className="text-indigo-500 hover:text-indigo-700 text-sm"
                                                 >
                                                     {showAllServices ? '仅显示活跃' : '显示全部'}
                                                 </button>

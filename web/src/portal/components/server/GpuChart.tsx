@@ -90,7 +90,7 @@ const GpuChartImpl = ({agentId, timeRange, start, end, isLive}: GpuChartProps) =
         <ChartContainer title="GPU 使用率与温度" icon={Zap}>
             <ResponsiveContainer width="100%" height={220}>
                 <LineChart data={chartData}>
-                    <CartesianGrid stroke="currentColor" strokeDasharray="4 4" className="stroke-slate-200 dark:stroke-cyan-900/30"/>
+                    <CartesianGrid stroke="currentColor" strokeDasharray="4 4" className="stroke-slate-200 dark:stroke-violet-900/30"/>
                     <XAxis
                         dataKey="timestamp"
                         type="number"
@@ -98,13 +98,13 @@ const GpuChartImpl = ({agentId, timeRange, start, end, isLive}: GpuChartProps) =
                         domain={['dataMin', 'dataMax']}
                         tickFormatter={(value) => formatChartTime(Number(value), timeRange, rangeMs)}
                         stroke="currentColor"
-                        className="stroke-gray-400 dark:stroke-cyan-600"
+                        className="stroke-gray-400 dark:stroke-violet-600"
                         style={{fontSize: '12px'}}
                     />
                     <YAxis
                         yAxisId="left"
                         stroke="currentColor"
-                        className="stroke-gray-400 dark:stroke-cyan-600"
+                        className="stroke-gray-400 dark:stroke-violet-600"
                         style={{fontSize: '12px'}}
                         tickFormatter={(value) => `${value}%`}
                     />
@@ -112,7 +112,7 @@ const GpuChartImpl = ({agentId, timeRange, start, end, isLive}: GpuChartProps) =
                         yAxisId="right"
                         orientation="right"
                         stroke="currentColor"
-                        className="stroke-gray-400 dark:stroke-cyan-600"
+                        className="stroke-gray-400 dark:stroke-violet-600"
                         style={{fontSize: '12px'}}
                         tickFormatter={(value) => `${value}°C`}
                     />

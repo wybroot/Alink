@@ -69,7 +69,7 @@ export const NetworkAddressSection = ({ipv4, ipv6, deviceIpInterfaces}: NetworkA
                                         {netInterface.addrs.map((addr) => (
                                             <span
                                                 key={`${netInterface.name}-${addr}`}
-                                                className="px-2 py-0.5 rounded-sm border border-slate-200 bg-white/70 text-xs font-mono text-slate-600 dark:border-cyan-900/40 dark:bg-cyan-950/40 dark:text-cyan-200"
+                                                className="px-2 py-0.5 rounded-sm border border-slate-200 bg-white/70 text-xs font-mono text-slate-600 dark:border-violet-900/40 dark:bg-violet-950/40 dark:text-violet-200"
                                             >
                                                 {addr}
                                             </span>

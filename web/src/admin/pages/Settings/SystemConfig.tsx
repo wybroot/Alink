@@ -312,10 +312,10 @@ const SystemConfigComponent = () => {
                                             }}
                                         />
                                         <div>
-                                            <h1 className="text-2xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 dark:from-cyan-400 dark:via-blue-400 dark:to-purple-400 uppercase italic">
+                                            <h1 className="text-2xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-violet-500 via-indigo-500 to-fuchsia-500 dark:from-violet-400 dark:via-indigo-400 dark:to-fuchsia-400 uppercase italic">
                                                 {leftName}<span className="text-slate-800 dark:text-white">{rightName}</span>
                                             </h1>
-                                            <p className="text-xs text-slate-500 dark:text-cyan-500 font-mono tracking-[0.3em] uppercase">
+                                            <p className="text-xs text-slate-500 dark:text-violet-500 font-mono tracking-[0.3em] uppercase">
                                                 {systemNameZh}
                                             </p>
                                         </div>

@@ -23,7 +23,7 @@ export const EmptyState = ({message = '监控数据不存在', showBackButton = 
                 {showBackButton && (
                     <button
                         onClick={() => window.history.back()}
-                        className="mt-4 text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                        className="mt-4 text-sm text-indigo-600 dark:text-indigo-400 hover:underline"
                     >
                         返回监控列表
                     </button>

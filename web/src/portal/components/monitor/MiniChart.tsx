@@ -34,7 +34,7 @@ export const MiniChart = ({data, lastValue, id}: MiniChartProps) => {
     }
 
     // 根据最后一个值决定颜色
-    const color = lastValue && lastValue <= 200 ? '#22d3ee' : '#fbbf24';
+    const color = lastValue && lastValue <= 200 ? '#8b5cf6' : '#fbbf24';
 
     return (
         <div className="h-16 w-full -mb-2">

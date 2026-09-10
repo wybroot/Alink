@@ -22,11 +22,11 @@ export const TemperatureMonitorSection = ({latestMetrics}: TemperatureMonitorSec
                 {latestMetrics.temperature.sort((a, b) => a.sensorKey.localeCompare(b.sensorKey)).map((temp) => (
                     <div
                         key={temp.sensorKey}
-                        className="rounded-xl border border-slate-200 dark:border-cyan-900/50 bg-slate-50 dark:bg-black/30 p-4 backdrop-blur-sm hover:border-slate-300 dark:hover:border-cyan-700/50 transition"
+                        className="rounded-xl border border-slate-200 dark:border-violet-900/50 bg-slate-50 dark:bg-black/30 p-4 backdrop-blur-sm hover:border-slate-300 dark:hover:border-violet-700/50 transition"
                     >
                         <div className="flex items-center gap-2 mb-2">
-                            <Thermometer className="h-4 w-4 text-gray-600 dark:text-cyan-500"/>
-                            <p className="text-xs font-bold font-mono uppercase tracking-wider text-gray-700 dark:text-cyan-500 truncate">{temp.type}</p>
+                            <Thermometer className="h-4 w-4 text-gray-600 dark:text-violet-500"/>
+                            <p className="text-xs font-bold font-mono uppercase tracking-wider text-gray-700 dark:text-violet-500 truncate">{temp.type}</p>
                         </div>
                         <p className="text-2xl font-bold text-orange-600 dark:text-orange-400">{temp.temperature.toFixed(1)}°C</p>
                     </div>

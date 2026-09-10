@@ -7,14 +7,14 @@ interface TypeIconProps {
 export const TypeIcon = ({ type }: TypeIconProps) => {
     switch (type.toLowerCase()) {
         case 'https':
-            return <ShieldCheck className="w-4 h-4 text-purple-500 dark:text-purple-400" />;
+            return <ShieldCheck className="w-4 h-4 text-fuchsia-500 dark:text-fuchsia-400" />;
         case 'http':
-            return <Globe className="w-4 h-4 text-blue-500 dark:text-blue-400" />;
+            return <Globe className="w-4 h-4 text-indigo-500 dark:text-indigo-400" />;
         case 'tcp':
             return <Server className="w-4 h-4 text-orange-500 dark:text-orange-400" />;
         case 'icmp':
         case 'ping':
-            return <Wifi className="w-4 h-4 text-cyan-500 dark:text-cyan-500" />;
+            return <Wifi className="w-4 h-4 text-violet-500 dark:text-violet-500" />;
         default:
             return <Server className="w-4 h-4 text-slate-500 dark:text-slate-400" />;
     }

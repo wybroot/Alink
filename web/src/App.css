@@ -1,4 +1,162 @@
 /* 亮色模式（默认） */
+@keyframes command-grid-drift {
+    from { background-position: 0 0, 0 0; }
+    to { background-position: 56px 56px, 56px 56px; }
+}
+
+@keyframes command-scan {
+    0%, 100% { transform: translateY(-120%); opacity: 0; }
+    12%, 72% { opacity: .45; }
+    88% { transform: translateY(620%); opacity: 0; }
+}
+
+@keyframes command-beacon {
+    0%, 100% { box-shadow: 0 0 0 0 rgb(167 139 250 / 0); }
+    50% { box-shadow: 0 0 0 7px rgb(167 139 250 / .09), 0 0 26px 3px rgb(167 139 250 / .15); }
+}
+
+.command-shell {
+    min-height: 100vh;
+    isolation: isolate;
+}
+
+.dark .command-shell {
+    background-color: #070512;
+    background-image:
+        linear-gradient(rgb(139 92 246 / .13) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(139 92 246 / .13) 1px, transparent 1px),
+        radial-gradient(ellipse 66% 46% at 50% -8%, rgb(76 29 149 / .38), transparent 72%);
+    background-size: 56px 56px, 56px 56px, auto;
+    animation: command-grid-drift 30s linear infinite;
+}
+
+.dark .command-shell::before,
+.dark .command-shell::after {
+    content: '';
+    pointer-events: none;
+    position: fixed;
+    z-index: -1;
+}
+
+.dark .command-shell::before {
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent 0 4px, rgb(255 255 255 / .012) 4px 5px);
+}
+
+.dark .command-shell::after {
+    inset: 0;
+    border: 1px solid rgb(167 139 250 / .14);
+    box-shadow: inset 0 0 150px rgb(4 1 15 / .92);
+}
+
+.command-panel {
+    position: relative;
+    overflow: hidden;
+}
+
+.dark .command-panel {
+    border: 1px solid rgb(167 139 250 / .24);
+    background: linear-gradient(135deg, rgb(24 14 48 / .94), rgb(10 6 28 / .88));
+    box-shadow: inset 0 1px 0 rgb(221 214 254 / .08), 0 20px 48px rgb(0 0 0 / .22);
+}
+
+.command-overview {
+    position: relative;
+    overflow: hidden;
+}
+
+.dark .command-overview {
+    border: 1px solid rgb(167 139 250 / .42);
+    background-image:
+        linear-gradient(90deg, rgb(20 10 48 / .99), rgb(16 9 39 / .86) 55%, rgb(30 14 63 / .97)),
+        repeating-linear-gradient(90deg, transparent 0 27px, rgb(167 139 250 / .09) 27px 28px);
+    box-shadow: inset 0 1px 0 rgb(237 233 254 / .13), 0 24px 60px rgb(0 0 0 / .32), 0 0 44px rgb(109 40 217 / .12);
+}
+
+.dark .command-overview::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 34px;
+    width: clamp(80px, 18vw, 220px);
+    height: 2px;
+    background: #a78bfa;
+    box-shadow: 0 0 20px #8b5cf6;
+}
+
+.dark .command-overview::after {
+    content: '';
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 74px;
+    height: 74px;
+    border: 1px solid rgb(167 139 250 / .34);
+    background-image: linear-gradient(90deg, transparent 49%, rgb(167 139 250 / .2) 50% 51%, transparent 52%), linear-gradient(transparent 49%, rgb(167 139 250 / .2) 50% 51%, transparent 52%);
+    background-size: 18px 18px;
+    transform: rotate(45deg);
+}
+
+.dark .command-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 22px;
+    width: 56px;
+    height: 1px;
+    background: #a78bfa;
+    box-shadow: 0 0 14px #8b5cf6;
+}
+
+.dark .command-panel--scan::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    height: 18%;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, rgb(167 139 250 / .08), transparent);
+    animation: command-scan 9s ease-in-out infinite;
+}
+
+.dark .command-beacon { animation: command-beacon 2.4s ease-in-out infinite; }
+
+.dark .ant-table-wrapper .ant-table,
+.dark .ant-table-wrapper .ant-table-container,
+.dark .ant-table-wrapper .ant-table-thead > tr > th,
+.dark .ant-table-wrapper .ant-table-tbody > tr > td { background: transparent !important; }
+
+.dark .ant-table-wrapper .ant-table-thead > tr > th {
+    color: #c4b5fd !important;
+    border-bottom-color: rgb(167 139 250 / .25) !important;
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.dark .ant-table-wrapper .ant-table-tbody > tr > td,
+.dark .ant-table-wrapper .ant-table-tbody > tr.ant-table-row:hover > td { border-bottom-color: rgb(167 139 250 / .12) !important; }
+.dark .ant-table-wrapper .ant-table-tbody > tr.ant-table-row:hover > td { background: rgb(109 40 217 / .12) !important; }
+
+.dark .ant-input,
+.dark .ant-input-affix-wrapper,
+.dark .ant-select-selector,
+.dark .ant-picker,
+.dark .ant-btn-default {
+    background: rgb(15 8 36 / .84) !important;
+    border-color: rgb(167 139 250 / .28) !important;
+    color: #ede9fe !important;
+    box-shadow: none !important;
+}
+
+.dark .ant-input::placeholder { color: #75658f !important; }
+.dark .ant-btn-primary { box-shadow: 0 0 24px rgb(124 58 237 / .3) !important; }
+
+@media (prefers-reduced-motion: reduce) {
+    .dark .command-shell,
+    .dark .command-panel--scan::after,
+    .dark .command-beacon { animation: none; }
+}
+
 .ant-table-container .ant-table-body,
 .ant-table-container .ant-table-content {
     scrollbar-width: thin;

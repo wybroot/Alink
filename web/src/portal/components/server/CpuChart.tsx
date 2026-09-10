@@ -79,7 +79,7 @@ export const CpuChart = ({agentId, timeRange, start, end, isLive, latestMetrics}
                                 <stop offset="95%" stopColor="#2563eb" stopOpacity={0}/>
                             </linearGradient>
                         </defs>
-                        <CartesianGrid stroke="currentColor" strokeDasharray="4 4" className="stroke-slate-200 dark:stroke-cyan-900/30"/>
+                        <CartesianGrid stroke="currentColor" strokeDasharray="4 4" className="stroke-slate-200 dark:stroke-violet-900/30"/>
                         <XAxis
                             dataKey="timestamp"
                             type="number"
@@ -89,12 +89,12 @@ export const CpuChart = ({agentId, timeRange, start, end, isLive, latestMetrics}
                             stroke="currentColor"
                             angle={-15}
                             textAnchor="end"
-                            className="text-xs text-gray-600 dark:text-cyan-500 font-mono"
+                            className="text-xs text-gray-600 dark:text-violet-500 font-mono"
                         />
                         <YAxis
                             domain={[0, 100]}
                             stroke="currentColor"
-                            className="stroke-gray-400 dark:stroke-cyan-600 text-xs"
+                            className="stroke-gray-400 dark:stroke-violet-600 text-xs"
                             tickFormatter={(value) => `${value}%`}
                         />
                         <Tooltip content={<CustomTooltip unit="%" timeFormat={isLive ? 'HH:mm:ss' : undefined}/>}/>

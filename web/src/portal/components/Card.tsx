@@ -27,7 +27,7 @@ export const Card = ({
                             </h2>
                         )}
                         {description && (
-                            <p className="text-xs text-gray-600 dark:text-cyan-500 mt-1 font-mono">
+                            <p className="text-xs text-gray-600 dark:text-violet-500 mt-1 font-mono">
                                 {description}
                             </p>
                         )}

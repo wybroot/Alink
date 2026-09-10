@@ -48,14 +48,14 @@ const getMaxDataPoints = (timeRange: string): number => {
 const generateColors = (count: number): string[] => {
     const colors: string[] = [];
     const hueStep = 360 / count;
-    
+
     for (let i = 0; i < count; i++) {
         const hue = (i * hueStep) % 360;
         const saturation = 65 + (i % 3) * 10;
         const lightness = 45 + (i % 2) * 10;
         colors.push(`hsl(${hue}, ${saturation}%, ${lightness}%)`);
     }
-    
+
     return colors;
 };
 
@@ -64,15 +64,15 @@ const generateColors = (count: number): string[] => {
  */
 const CustomLegend = ({ onClick, selectedAgents, allAgents, colors, collapsed }: any) => {
     if (!allAgents || allAgents.length === 0) return null;
-    
+
     if (collapsed) return null;
-    
+
     return (
         <div className="flex flex-wrap justify-center gap-4 pt-4">
             {allAgents.map((agent: { id: string; name: string }, index: number) => {
                 const isSelected = selectedAgents.has(agent.id);
                 const color = colors[index];
-                
+
                 return (
                     <div
                         key={agent.id}
@@ -161,10 +161,10 @@ export const ResponseTimeChart = ({monitorId, monitorStats}: ResponseTimeChartPr
     // 点击图例切换选中状态
     const handleLegendClick = (agentId: string) => {
         const newSelected = new Set(selectedAgents);
-        
+
         // 判断是否是全选状态
         const isAllSelected = selectedAgents.size === availableAgents.length;
-        
+
         if (isAllSelected) {
             // 全选状态下，点击某个 → 只选这一个
             setSelectedAgents(new Set([agentId]));
@@ -182,15 +182,15 @@ export const ResponseTimeChart = ({monitorId, monitorStats}: ResponseTimeChartPr
     // 点击图表线条切换选中状态
     const handleAreaClick = (data: any) => {
         if (!data || !data.dataKey) return;
-        
+
         // 从 dataKey 中提取 agentId (格式: agent_${agentId})
         const agentId = data.dataKey.replace('agent_', '');
-        
+
         const newSelected = new Set(selectedAgents);
-        
+
         // 判断是否是全选状态
         const isAllSelected = selectedAgents.size === availableAgents.length;
-        
+
         if (isAllSelected) {
             // 全选状态下，点击某个 → 只选这一个
             setSelectedAgents(new Set([agentId]));
@@ -227,12 +227,12 @@ export const ResponseTimeChart = ({monitorId, monitorStats}: ResponseTimeChartPr
 
         // 收集所有选中探针的数据
         const selectedSeriesData: Array<{ key: string; data: Array<{ timestamp: number; value: number }> }> = [];
-        
+
         seriesList.forEach((s) => {
             const agentId = s.labels?.agent_id || 'unknown';
             if (!selectedAgents.has(agentId)) return;
             if (!s.data || s.data.length === 0) return;
-            
+
             selectedSeriesData.push({
                 key: `agent_${agentId}`,
                 data: [...s.data].sort((a, b) => a.timestamp - b.timestamp)
@@ -262,13 +262,13 @@ export const ResponseTimeChart = ({monitorId, monitorStats}: ResponseTimeChartPr
         const interpolate = (data: Array<{ timestamp: number; value: number }>, targetTime: number): number | null => {
             if (data.length === 0) return null;
             if (data.length === 1) return data[0].timestamp === targetTime ? data[0].value : null;
-            
+
             // 超出范围不插值（防止产生虚假连线）
             if (targetTime < data[0].timestamp || targetTime > data[data.length - 1].timestamp) {
                 // 如果距离最近的点足够近（比如小于两个采样间隔），可以考虑保留，否则返回null
                 return null;
             }
-            
+
             // 二分查找
             let left = 0, right = data.length - 1;
             while (right - left > 1) {
@@ -279,7 +279,7 @@ export const ResponseTimeChart = ({monitorId, monitorStats}: ResponseTimeChartPr
                     right = mid;
                 }
             }
-            
+
             const leftPoint = data[left];
             const rightPoint = data[right];
             const ratio = (targetTime - leftPoint.timestamp) / (rightPoint.timestamp - leftPoint.timestamp);
@@ -303,8 +303,8 @@ export const ResponseTimeChart = ({monitorId, monitorStats}: ResponseTimeChartPr
         <CyberCard className={'p-6'}>
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                 <div>
-                    <h3 className="text-lg font-bold tracking-wide text-slate-800 dark:text-cyan-100 uppercase">响应时间趋势</h3>
-                    <p className="text-xs text-gray-600 dark:text-cyan-500 mt-1 font-mono">监控各探针的响应时间变化</p>
+                    <h3 className="text-lg font-bold tracking-wide text-slate-800 dark:text-violet-100 uppercase">响应时间趋势</h3>
+                    <p className="text-xs text-gray-600 dark:text-violet-500 mt-1 font-mono">监控各探针的响应时间变化</p>
                 </div>
                 <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3">
                     <TimeRangeSelector
@@ -323,16 +323,16 @@ export const ResponseTimeChart = ({monitorId, monitorStats}: ResponseTimeChartPr
             {/* 使用提示和恢复按钮 */}
             {availableAgents.length > 0 && (
                 <div className="mb-3 flex items-center justify-between">
-                    <div className="text-xs text-gray-500 dark:text-cyan-600">
+                    <div className="text-xs text-gray-500 dark:text-violet-600">
                         💡 点击图表线条或图例切换显示
                     </div>
                     {hasUnselected && (
                         <button
                             onClick={handleSelectAll}
                             className="p-1.5 rounded
-                                text-gray-500 dark:text-cyan-500 
-                                hover:text-gray-700 dark:hover:text-cyan-400
-                                hover:bg-gray-100 dark:hover:bg-cyan-900/30
+                                text-gray-500 dark:text-violet-500
+                                hover:text-gray-700 dark:hover:text-violet-400
+                                hover:bg-gray-100 dark:hover:bg-violet-900/30
                                 transition-colors"
                             title="恢复全选"
                         >
@@ -361,7 +361,7 @@ export const ResponseTimeChart = ({monitorId, monitorStats}: ResponseTimeChartPr
                             </defs>
                             <CartesianGrid
                                 strokeDasharray="3 3"
-                                className="stroke-slate-200 dark:stroke-cyan-900/30"
+                                className="stroke-slate-200 dark:stroke-violet-900/30"
                                 vertical={false}
                             />
                             <XAxis
@@ -370,7 +370,7 @@ export const ResponseTimeChart = ({monitorId, monitorStats}: ResponseTimeChartPr
                                 scale="time"
                                 domain={['dataMin', 'dataMax']}
                                 tickFormatter={(value) => formatChartTime(Number(value), timeRange, rangeMs)}
-                                className="text-xs text-gray-600 dark:text-cyan-500 font-mono"
+                                className="text-xs text-gray-600 dark:text-violet-500 font-mono"
                                 stroke="currentColor"
                                 tickLine={false}
                                 axisLine={false}
@@ -378,7 +378,7 @@ export const ResponseTimeChart = ({monitorId, monitorStats}: ResponseTimeChartPr
                                 textAnchor="end"
                             />
                             <YAxis
-                                className="text-xs text-gray-600 dark:text-cyan-500 font-mono"
+                                className="text-xs text-gray-600 dark:text-violet-500 font-mono"
                                 stroke="currentColor"
                                 tickLine={false}
                                 axisLine={false}
@@ -411,7 +411,7 @@ export const ResponseTimeChart = ({monitorId, monitorStats}: ResponseTimeChartPr
                             })}
                         </AreaChart>
                     </ResponsiveContainer>
-                    
+
                     {/* 桌面端：直接显示图例 */}
                     {!isMobile && availableAgents.length > 0 && (
                         <CustomLegend
@@ -421,13 +421,13 @@ export const ResponseTimeChart = ({monitorId, monitorStats}: ResponseTimeChartPr
                             colors={colors}
                         />
                     )}
-                    
+
                     {/* 移动端：可折叠图例 */}
                     {isMobile && availableAgents.length > 0 && (
                         <div className="pt-4">
                             <button
                                 onClick={toggleLegend}
-                                className="w-full flex items-center justify-center gap-2 py-2 text-xs text-gray-600 dark:text-cyan-400 hover:text-gray-900 dark:hover:text-cyan-300"
+                                className="w-full flex items-center justify-center gap-2 py-2 text-xs text-gray-600 dark:text-violet-400 hover:text-gray-900 dark:hover:text-violet-300"
                             >
                                 <span>{legendCollapsed ? '显示图例' : '收起图例'}</span>
                                 {legendCollapsed ? <ChevronDown size={16} /> : <ChevronUp size={16} />}

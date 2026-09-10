@@ -15,19 +15,19 @@ export type SnapshotCardData = {
 
 const accentThemes: Record<AccentVariant, { icon: string; badge: string; highlight: string }> = {
     blue: {
-        icon: 'text-blue-400',
-        badge: 'text-blue-400',
-        highlight: 'text-blue-400',
+        icon: 'text-indigo-400',
+        badge: 'text-indigo-400',
+        highlight: 'text-indigo-400',
     },
     emerald: {
-        icon: 'text-emerald-400',
-        badge: 'text-emerald-400',
-        highlight: 'text-emerald-400',
+        icon: 'text-lime-400',
+        badge: 'text-lime-400',
+        highlight: 'text-lime-400',
     },
     purple: {
-        icon: 'text-purple-400',
-        badge: 'text-purple-400',
-        highlight: 'text-purple-400',
+        icon: 'text-fuchsia-400',
+        badge: 'text-fuchsia-400',
+        highlight: 'text-fuchsia-400',
     },
     amber: {
         icon: 'text-amber-400',
@@ -47,23 +47,23 @@ export const SnapshotGrid = ({cards}: SnapshotGridProps) => (
             return (
                 <div
                     key={card.key}
-                    className="rounded-xl border border-slate-200 dark:border-cyan-900/50 bg-slate-50 dark:bg-black/40 p-4 transition hover:border-slate-300 dark:hover:border-cyan-700/50"
+                    className="rounded-xl border border-slate-200 dark:border-violet-900/50 bg-slate-50 dark:bg-black/40 p-4 transition hover:border-slate-300 dark:hover:border-violet-700/50"
                 >
                     <div className="mb-3 flex items-start justify-between">
                         <div className="flex items-center gap-2">
-                            <span className={cn("flex h-9 w-9 items-center justify-center rounded-lg bg-gray-200 dark:bg-cyan-500/10", theme.icon)}>
+                            <span className={cn("flex h-9 w-9 items-center justify-center rounded-lg bg-gray-200 dark:bg-violet-500/10", theme.icon)}>
                                 <card.icon className="h-4 w-4"/>
                             </span>
-                            <p className="text-xs font-bold font-mono uppercase tracking-wider text-gray-700 dark:text-cyan-300">{card.title}</p>
+                            <p className="text-xs font-bold font-mono uppercase tracking-wider text-gray-700 dark:text-violet-300">{card.title}</p>
                         </div>
                         <span className={cn("text-xl font-bold", theme.highlight)}>{card.usagePercent}</span>
                     </div>
                     <div className="space-y-2">
                         {card.metrics.map((metric) => (
                             <div key={metric.label} className="flex items-center justify-between text-xs">
-                                <span className="text-gray-600 dark:text-cyan-500 font-mono text-xs uppercase tracking-wider">{metric.label}</span>
+                                <span className="text-gray-600 dark:text-violet-500 font-mono text-xs uppercase tracking-wider">{metric.label}</span>
                                 <span
-                                    className="ml-2 text-right font-medium text-slate-700 dark:text-cyan-200">{metric.value}</span>
+                                    className="ml-2 text-right font-medium text-slate-700 dark:text-violet-200">{metric.value}</span>
                             </div>
                         ))}
                     </div>

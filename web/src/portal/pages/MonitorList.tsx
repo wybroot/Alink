@@ -10,18 +10,18 @@ import MonitorCard, {type DisplayMode} from "@portal/components/monitor/MonitorC
 
 const LoadingSpinner = () => (
     <div className="flex min-h-[400px] w-full items-center justify-center">
-        <div className="flex flex-col items-center gap-3 text-gray-600 dark:text-cyan-500">
-            <Loader2 className="h-8 w-8 animate-spin text-gray-600 dark:text-cyan-500"/>
+        <div className="flex flex-col items-center gap-3 text-gray-600 dark:text-violet-500">
+            <Loader2 className="h-8 w-8 animate-spin text-gray-600 dark:text-violet-500"/>
             <span className="text-sm font-mono">加载监控数据中...</span>
         </div>
     </div>
 );
 
 const EmptyState = () => (
-    <div className="flex min-h-[400px] flex-col items-center justify-center text-gray-600 dark:text-cyan-500">
+    <div className="flex min-h-[400px] flex-col items-center justify-center text-gray-600 dark:text-violet-500">
         <Shield className="mb-4 h-16 w-16 opacity-20"/>
         <p className="text-lg font-medium font-mono">暂无监控数据</p>
-        <p className="mt-2 text-sm text-gray-600 dark:text-cyan-500">请先在管理后台添加监控任务</p>
+        <p className="mt-2 text-sm text-gray-600 dark:text-violet-500">请先在管理后台添加监控任务</p>
     </div>
 );
 
@@ -125,15 +125,15 @@ const MonitorList = () => {
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
                 <div className="flex flex-wrap gap-4 items-center w-full md:w-auto">
                     {/* 显示模式切换 */}
-                    <div className="flex gap-1 bg-slate-100 dark:bg-black/40 p-1 rounded-lg border border-slate-200 dark:border-cyan-900/50 items-center">
-                        <span className="text-xs text-gray-600 dark:text-cyan-500 px-2 font-mono">卡片指标:</span>
+                    <div className="flex gap-1 bg-slate-100 dark:bg-black/40 p-1 rounded-lg border border-slate-200 dark:border-violet-900/50 items-center">
+                        <span className="text-xs text-gray-600 dark:text-violet-500 px-2 font-mono">卡片指标:</span>
                         <button
                             onClick={() => setDisplayMode('avg')}
                             className={cn(
                                 "px-3 py-1.5 text-xs font-medium rounded transition-all flex items-center gap-1 font-mono cursor-pointer",
                                 displayMode === 'avg'
-                                    ? 'bg-gray-200 dark:bg-cyan-500/20 text-gray-800 dark:text-cyan-300 border border-gray-300 dark:border-cyan-500/30'
-                                    : 'text-gray-600 dark:text-cyan-500 hover:text-gray-800 dark:hover:text-cyan-400'
+                                    ? 'bg-gray-200 dark:bg-violet-500/20 text-gray-800 dark:text-violet-300 border border-gray-300 dark:border-violet-500/30'
+                                    : 'text-gray-600 dark:text-violet-500 hover:text-gray-800 dark:hover:text-violet-400'
                             )}
                         >
                             <BarChart3 className="w-3 h-3"/> 平均
@@ -143,8 +143,8 @@ const MonitorList = () => {
                             className={cn(
                                 "px-3 py-1.5 text-xs font-medium rounded transition-all flex items-center gap-1 font-mono cursor-pointer",
                                 displayMode === 'max'
-                                    ? 'bg-gray-200 dark:bg-cyan-500/20 text-gray-800 dark:text-cyan-300 border border-gray-300 dark:border-cyan-500/30'
-                                    : 'text-gray-600 dark:text-cyan-500 hover:text-gray-800 dark:hover:text-cyan-400'
+                                    ? 'bg-gray-200 dark:bg-violet-500/20 text-gray-800 dark:text-violet-300 border border-gray-300 dark:border-violet-500/30'
+                                    : 'text-gray-600 dark:text-violet-500 hover:text-gray-800 dark:hover:text-violet-400'
                             )}
                         >
                             <Maximize2 className="w-3 h-3"/> 最差(Max)
@@ -155,15 +155,15 @@ const MonitorList = () => {
                 {/* 搜索框 */}
                 <div className="relative w-full md:w-64 group">
                     <div
-                        className="hidden dark:block absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                    <div className="relative flex items-center bg-white dark:bg-[#0a0b10] rounded-lg border border-slate-200 dark:border-cyan-900">
-                        <Search className="w-4 h-4 ml-3 text-gray-500 dark:text-cyan-500"/>
+                        className="hidden dark:block absolute -inset-0.5 bg-gradient-to-r from-violet-500 to-indigo-600 rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                    <div className="relative flex items-center bg-white dark:bg-[#0d071a] rounded-lg border border-slate-200 dark:border-violet-900">
+                        <Search className="w-4 h-4 ml-3 text-gray-500 dark:text-violet-500"/>
                         <input
                             type="text"
                             placeholder="搜索服务名称或地址..."
                             value={searchKeyword}
                             onChange={(e) => setSearchKeyword(e.target.value)}
-                            className="w-full bg-transparent border-none text-xs text-gray-800 dark:text-cyan-100 p-2.5 focus:ring-0 placeholder-gray-400 dark:placeholder-cyan-600 font-mono focus:outline-none"
+                            className="w-full bg-transparent border-none text-xs text-gray-800 dark:text-violet-100 p-2.5 focus:ring-0 placeholder-gray-400 dark:placeholder-violet-600 font-mono focus:outline-none"
                         />
                     </div>
                 </div>

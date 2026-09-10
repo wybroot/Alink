@@ -18,7 +18,7 @@ interface AgentStatsTableProps {
 export const AgentStatsTable = ({monitorStats, monitorType}: AgentStatsTableProps) => {
     if (monitorStats.length === 0) {
         return (
-            <div className="text-center py-12 text-gray-600 dark:text-cyan-500">
+            <div className="text-center py-12 text-gray-600 dark:text-violet-500">
                 <p className="text-sm font-mono">暂无探针数据</p>
             </div>
         );
@@ -27,8 +27,8 @@ export const AgentStatsTable = ({monitorStats, monitorType}: AgentStatsTableProp
     return (
         <CyberCard className="p-4 sm:p-6">
             <div className="mb-4 sm:mb-6">
-                <h3 className="text-base sm:text-lg font-bold tracking-wide text-slate-800 dark:text-cyan-100 uppercase">探针监控详情</h3>
-                <p className="text-xs text-gray-600 dark:text-cyan-500 mt-1 font-mono">各探针的当前状态和统计数据</p>
+                <h3 className="text-base sm:text-lg font-bold tracking-wide text-slate-800 dark:text-violet-100 uppercase">探针监控详情</h3>
+                <p className="text-xs text-gray-600 dark:text-violet-500 mt-1 font-mono">各探针的当前状态和统计数据</p>
             </div>
 
             {/* 移动端卡片布局 */}
@@ -38,7 +38,7 @@ export const AgentStatsTable = ({monitorStats, monitorType}: AgentStatsTableProp
                     return (
                         <div
                             key={stat.agentId}
-                            className="p-4 bg-slate-50 dark:bg-cyan-950/20 border border-slate-200 dark:border-cyan-900/50 rounded-lg space-y-3"
+                            className="p-4 bg-slate-50 dark:bg-violet-950/20 border border-slate-200 dark:border-violet-900/50 rounded-lg space-y-3"
                         >
                             {/* 探针名称和状态 */}
                             <div className="flex items-center justify-between gap-3">
@@ -47,8 +47,8 @@ export const AgentStatsTable = ({monitorStats, monitorType}: AgentStatsTableProp
                                         className="inline-block h-2 w-2 rounded-full flex-shrink-0"
                                         style={{backgroundColor: color}}
                                     />
-                                    <MapPin className="h-3.5 w-3.5 text-gray-600 dark:text-cyan-500 flex-shrink-0"/>
-                                    <span className="font-mono text-sm text-slate-800 dark:text-cyan-200 truncate">
+                                    <MapPin className="h-3.5 w-3.5 text-gray-600 dark:text-violet-500 flex-shrink-0"/>
+                                    <span className="font-mono text-sm text-slate-800 dark:text-violet-200 truncate">
                                         {stat.agentName || stat.agentId.substring(0, 8)}
                                     </span>
                                 </div>
@@ -58,22 +58,22 @@ export const AgentStatsTable = ({monitorStats, monitorType}: AgentStatsTableProp
                             {/* 响应时间和最后检测 */}
                             <div className="flex items-center justify-between gap-4 text-sm">
                                 <div className="flex items-center gap-2">
-                                    <Clock className="h-4 w-4 text-gray-600 dark:text-cyan-500"/>
-                                    <span className="font-semibold text-slate-800 dark:text-cyan-100 font-mono">
+                                    <Clock className="h-4 w-4 text-gray-600 dark:text-violet-500"/>
+                                    <span className="font-semibold text-slate-800 dark:text-violet-100 font-mono">
                                         {formatTime(stat.responseTime)}
                                     </span>
                                 </div>
-                                <span className="text-xs text-gray-600 dark:text-cyan-500 font-mono">
+                                <span className="text-xs text-gray-600 dark:text-violet-500 font-mono">
                                     {formatDateTime(stat.checkedAt)}
                                 </span>
                             </div>
 
                             {/* 证书信息 */}
                             {monitorType === 'https' && stat.certExpiryTime && (
-                                <div className="pt-2 border-t border-slate-200 dark:border-cyan-900/30">
+                                <div className="pt-2 border-t border-slate-200 dark:border-violet-900/30">
                                     <div className="flex items-center gap-2">
                                         <span
-                                            className="text-xs text-gray-600 dark:text-cyan-500 font-mono">证书:</span>
+                                            className="text-xs text-gray-600 dark:text-violet-500 font-mono">证书:</span>
                                         <CertBadge
                                             expiryTime={stat.certExpiryTime}
                                             daysLeft={stat.certDaysLeft}
@@ -84,7 +84,7 @@ export const AgentStatsTable = ({monitorStats, monitorType}: AgentStatsTableProp
 
                             {/* 错误信息 */}
                             {stat.status === 'down' && stat.message && (
-                                <div className="pt-2 border-t border-slate-200 dark:border-cyan-900/30">
+                                <div className="pt-2 border-t border-slate-200 dark:border-violet-900/30">
                                     <div className="flex items-start gap-2">
                                         <AlertCircle className="h-4 w-4 text-rose-400 flex-shrink-0 mt-0.5"/>
                                         <span className="text-xs text-rose-300 break-words font-mono">
@@ -102,35 +102,35 @@ export const AgentStatsTable = ({monitorStats, monitorType}: AgentStatsTableProp
             <div className="hidden lg:block overflow-x-auto -mx-6 px-6">
                 <table className="min-w-full">
                     <thead>
-                    <tr className="border-b border-slate-200 dark:border-cyan-900/50">
-                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-gray-600 dark:text-cyan-500 font-mono">
+                    <tr className="border-b border-slate-200 dark:border-violet-900/50">
+                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-gray-600 dark:text-violet-500 font-mono">
                             探针名称
                         </th>
-                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-gray-600 dark:text-cyan-500 font-mono">
+                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-gray-600 dark:text-violet-500 font-mono">
                             状态
                         </th>
-                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-gray-600 dark:text-cyan-500 font-mono">
+                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-gray-600 dark:text-violet-500 font-mono">
                             响应时间
                         </th>
-                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-gray-600 dark:text-cyan-500 font-mono">
+                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-gray-600 dark:text-violet-500 font-mono">
                             最后检测
                         </th>
                         {monitorType === 'https' && (
-                            <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-gray-600 dark:text-cyan-500 font-mono hidden xl:table-cell">
+                            <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-gray-600 dark:text-violet-500 font-mono hidden xl:table-cell">
                                 证书信息
                             </th>
                         )}
-                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-gray-600 dark:text-cyan-500 font-mono hidden xl:table-cell">
+                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-gray-600 dark:text-violet-500 font-mono hidden xl:table-cell">
                             错误信息
                         </th>
                     </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-200 dark:divide-cyan-900/30">
+                    <tbody className="divide-y divide-slate-200 dark:divide-violet-900/30">
                     {monitorStats.map((stat, index) => {
                         const color = AGENT_COLORS[index % AGENT_COLORS.length];
                         return (
                             <tr key={stat.agentId}
-                                className="hover:bg-slate-100 dark:hover:bg-cyan-950/20 transition-colors">
+                                className="hover:bg-slate-100 dark:hover:bg-violet-950/20 transition-colors">
                                 <td className="px-4 py-4">
                                     <div className="flex items-center gap-3">
                                             <span
@@ -138,8 +138,8 @@ export const AgentStatsTable = ({monitorStats, monitorType}: AgentStatsTableProp
                                                 style={{backgroundColor: color}}
                                             />
                                         <div className="flex items-center gap-2">
-                                            <MapPin className="h-3.5 w-3.5 text-gray-600 dark:text-cyan-500"/>
-                                            <span className="font-mono text-sm text-slate-800 dark:text-cyan-200">
+                                            <MapPin className="h-3.5 w-3.5 text-gray-600 dark:text-violet-500"/>
+                                            <span className="font-mono text-sm text-slate-800 dark:text-violet-200">
                                                     {stat.agentName || stat.agentId.substring(0, 8)}
                                                 </span>
                                         </div>
@@ -150,14 +150,14 @@ export const AgentStatsTable = ({monitorStats, monitorType}: AgentStatsTableProp
                                 </td>
                                 <td className="px-4 py-4">
                                     <div className="flex items-center gap-2">
-                                        <Clock className="h-4 w-4 text-gray-600 dark:text-cyan-500"/>
+                                        <Clock className="h-4 w-4 text-gray-600 dark:text-violet-500"/>
                                         <span
-                                            className="text-sm font-semibold text-slate-800 dark:text-cyan-100 font-mono">
+                                            className="text-sm font-semibold text-slate-800 dark:text-violet-100 font-mono">
                                                 {formatTime(stat.responseTime)}
                                             </span>
                                     </div>
                                 </td>
-                                <td className="px-4 py-4 text-sm text-gray-600 dark:text-cyan-500 font-mono">
+                                <td className="px-4 py-4 text-sm text-gray-600 dark:text-violet-500 font-mono">
                                     {formatDateTime(stat.checkedAt)}
                                 </td>
                                 {monitorType === 'https' && (
@@ -168,7 +168,7 @@ export const AgentStatsTable = ({monitorStats, monitorType}: AgentStatsTableProp
                                                 daysLeft={stat.certDaysLeft}
                                             />
                                         ) : (
-                                            <span className="text-xs text-gray-600 dark:text-cyan-500">-</span>
+                                            <span className="text-xs text-gray-600 dark:text-violet-500">-</span>
                                         )}
                                     </td>
                                 )}
@@ -183,7 +183,7 @@ export const AgentStatsTable = ({monitorStats, monitorType}: AgentStatsTableProp
                                                 </span>
                                         </div>
                                     ) : (
-                                        <span className="text-xs text-gray-600 dark:text-cyan-500">-</span>
+                                        <span className="text-xs text-gray-600 dark:text-violet-500">-</span>
                                     )}
                                 </td>
                             </tr>

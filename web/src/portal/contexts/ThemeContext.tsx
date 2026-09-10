@@ -22,7 +22,7 @@ export const ThemeProvider = ({children}: ThemeProviderProps) => {
     // 从 localStorage 读取用户偏好,默认为 auto
     const [theme, setThemeState] = useState<Theme>(() => {
         const saved = localStorage.getItem('theme');
-        return (saved as Theme) || 'auto';
+        return saved === 'light' ? 'light' : 'dark';
     });
 
     // 实际应用的主题

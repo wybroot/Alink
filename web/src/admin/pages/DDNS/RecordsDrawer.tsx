@@ -68,7 +68,7 @@ const RecordsDrawer = ({open, config, onClose}: RecordsDrawerProps) => {
                         {!isIPv6 && <ArrowRight className="h-4 w-4 text-gray-400 dark:text-gray-500"/>}
                         <div className="flex items-center gap-2">
                             <span className="text-xs text-gray-400 dark:text-gray-500">新:</span>
-                            <span className={`font-mono font-medium text-blue-600 dark:text-blue-400 ${isIPv6 ? 'text-xs break-all' : ''}`}>
+                            <span className={`font-mono font-medium text-indigo-600 dark:text-indigo-400 ${isIPv6 ? 'text-xs break-all' : ''}`}>
                                 {record.newIp}
                             </span>
                         </div>
@@ -85,8 +85,8 @@ const RecordsDrawer = ({open, config, onClose}: RecordsDrawerProps) => {
                 <div className="flex items-center gap-1">
                     {status === 'success' ? (
                         <>
-                            <CheckCircle2 className="h-4 w-4 text-green-500"/>
-                            <span className="text-green-600">成功</span>
+                            <CheckCircle2 className="h-4 w-4 text-lime-500"/>
+                            <span className="text-lime-600">成功</span>
                         </>
                     ) : (
                         <>

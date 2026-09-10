@@ -84,7 +84,7 @@ const TemperatureChartImpl = ({agentId, timeRange, start, end, isLive}: Temperat
         <select
             value={selectedTempType}
             onChange={(e) => setSelectedTempType(e.target.value)}
-            className="rounded-lg border border-slate-200 dark:border-cyan-900/50 bg-white dark:bg-black/40 px-3 py-1.5 text-xs font-mono text-gray-700 dark:text-cyan-300 hover:border-slate-300 dark:hover:border-cyan-700 focus:border-slate-400 dark:focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-slate-200 dark:focus:ring-cyan-500/20"
+            className="rounded-lg border border-slate-200 dark:border-violet-900/50 bg-white dark:bg-black/40 px-3 py-1.5 text-xs font-mono text-gray-700 dark:text-violet-300 hover:border-slate-300 dark:hover:border-violet-700 focus:border-slate-400 dark:focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-slate-200 dark:focus:ring-violet-500/20"
         >
             <option value="all">所有类型</option>
             {temperatureTypes.map((type) => (
@@ -113,7 +113,7 @@ const TemperatureChartImpl = ({agentId, timeRange, start, end, isLive}: Temperat
         <ChartContainer title="系统温度" icon={Thermometer} action={tempTypeSelector}>
             <ResponsiveContainer width="100%" height={250}>
                 <LineChart data={chartData}>
-                    <CartesianGrid stroke="currentColor" strokeDasharray="4 4" className="stroke-slate-200 dark:stroke-cyan-900/30"/>
+                    <CartesianGrid stroke="currentColor" strokeDasharray="4 4" className="stroke-slate-200 dark:stroke-violet-900/30"/>
                     <XAxis
                         dataKey="timestamp"
                         type="number"
@@ -123,12 +123,12 @@ const TemperatureChartImpl = ({agentId, timeRange, start, end, isLive}: Temperat
                         stroke="currentColor"
                         angle={-15}
                         textAnchor="end"
-                        className="text-xs text-gray-600 dark:text-cyan-500 font-mono"
+                        className="text-xs text-gray-600 dark:text-violet-500 font-mono"
                         height={45}
                     />
                     <YAxis
                         stroke="currentColor"
-                        className="stroke-gray-400 dark:stroke-cyan-600 text-xs"
+                        className="stroke-gray-400 dark:stroke-violet-600 text-xs"
                         tickFormatter={(value) => `${value}°C`}
                     />
                     <Tooltip content={<CustomTooltip unit="°C"/>}/>

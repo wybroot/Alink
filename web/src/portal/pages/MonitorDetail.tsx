@@ -49,7 +49,7 @@ const MonitorDetail = () => {
     }
 
     return (
-        <div className="bg-[#f0f2f5] dark:bg-[#05050a] min-h-screen">
+        <div className="bg-[#f0f2f5] dark:bg-[#08040f] min-h-screen">
             <div className="mx-auto flex max-w-7xl flex-col px-4 pb-10 pt-4 sm:pt-6 sm:px-6 lg:px-8">
                 {/* 头部区域 */}
                 <MonitorHero

@@ -2,14 +2,14 @@ import * as Tooltip from '@radix-ui/react-tooltip';
 import {cn} from "@/lib/utils.ts";
 
 // 紧凑型资源条组件
-const CompactResourceBar = ({value, label, subtext, icon: Icon, color = "bg-cyan-500"}) => {
+const CompactResourceBar = ({value, label, subtext, icon: Icon, color = "bg-violet-500"}) => {
     const isCritical = value > 90;
     const isWarning = value > 75;
 
     // 颜色定义 (Hex codes for precise control)
     let barColor = "";
     let iconClass = "";
-    let textClass = "dark:text-cyan-50"; // 默认高亮白/青
+    let textClass = "dark:text-violet-50"; // 默认高亮白/青
 
     if (isCritical) {
         barColor = "bg-rose-500";
@@ -20,14 +20,14 @@ const CompactResourceBar = ({value, label, subtext, icon: Icon, color = "bg-cyan
         iconClass = "text-amber-600 dark:text-amber-400";
         textClass = "text-amber-400";
     } else if (color.includes("purple")) {
-        barColor = "bg-purple-500";
-        iconClass = "text-purple-600 dark:text-purple-400";
+        barColor = "bg-fuchsia-500";
+        iconClass = "text-fuchsia-600 dark:text-fuchsia-400";
     } else if (color.includes("blue")) {
-        barColor = "bg-blue-500";
-        iconClass = "text-blue-600 dark:text-blue-400";
+        barColor = "bg-indigo-500";
+        iconClass = "text-indigo-600 dark:text-indigo-400";
     } else {
-        barColor = "bg-cyan-500";
-        iconClass = "text-cyan-600 dark:text-cyan-400";
+        barColor = "bg-violet-500";
+        iconClass = "text-violet-600 dark:text-violet-400";
     }
 
     return (

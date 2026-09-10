@@ -40,48 +40,48 @@ export const GpuMonitorSection = ({latestMetrics}: GpuMonitorSectionProps) => {
                 {latestMetrics.gpu.map((gpu) => (
                     <div
                         key={gpu.index}
-                        className="rounded-xl border border-slate-200 dark:border-cyan-900/50 bg-slate-50 dark:bg-black/30 p-4 backdrop-blur-sm hover:border-slate-300 dark:hover:border-cyan-700/50 transition"
+                        className="rounded-xl border border-slate-200 dark:border-violet-900/50 bg-slate-50 dark:bg-black/30 p-4 backdrop-blur-sm hover:border-slate-300 dark:hover:border-violet-700/50 transition"
                     >
                         <div className="mb-3 flex items-center justify-between">
                             <div className="flex items-center gap-2">
                                 <span
-                                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-200 text-gray-600 dark:bg-cyan-500/10 dark:text-cyan-500">
+                                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-200 text-gray-600 dark:bg-violet-500/10 dark:text-violet-500">
                                     <Zap className="h-4 w-4"/>
                                 </span>
                                 <div>
-                                    <p className="text-sm font-bold font-mono text-gray-700 dark:text-cyan-100">GPU {gpu.index}</p>
-                                    <p className="text-xs text-gray-600 dark:text-cyan-500">{gpu.name}</p>
+                                    <p className="text-sm font-bold font-mono text-gray-700 dark:text-violet-100">GPU {gpu.index}</p>
+                                    <p className="text-xs text-gray-600 dark:text-violet-500">{gpu.name}</p>
                                 </div>
                             </div>
-                            <span className="text-2xl font-bold text-orange-600 dark:text-purple-400">
+                            <span className="text-2xl font-bold text-orange-600 dark:text-fuchsia-400">
                                 {gpu.utilization?.toFixed(1) ?? 0}%
                             </span>
                         </div>
                         <div className="space-y-2 text-xs">
                             <div className="flex items-center justify-between">
                                 <span
-                                    className="text-gray-600 dark:text-cyan-500 font-mono text-xs uppercase tracking-wider">温度</span>
+                                    className="text-gray-600 dark:text-violet-500 font-mono text-xs uppercase tracking-wider">温度</span>
                                 <span
-                                    className="font-medium text-gray-900 dark:text-cyan-200">{gpu.temperature?.toFixed(1)}°C</span>
+                                    className="font-medium text-gray-900 dark:text-violet-200">{gpu.temperature?.toFixed(1)}°C</span>
                             </div>
                             <div className="flex items-center justify-between">
                                 <span
-                                    className="text-gray-600 dark:text-cyan-500 font-mono text-xs uppercase tracking-wider">显存</span>
-                                <span className="font-medium text-gray-900 dark:text-cyan-200">
+                                    className="text-gray-600 dark:text-violet-500 font-mono text-xs uppercase tracking-wider">显存</span>
+                                <span className="font-medium text-gray-900 dark:text-violet-200">
                                     {formatBytes(gpu.memoryUsed)} / {formatBytes(gpu.memoryTotal)}
                                 </span>
                             </div>
                             <div className="flex items-center justify-between">
                                 <span
-                                    className="text-gray-600 dark:text-cyan-500 font-mono text-xs uppercase tracking-wider">功耗</span>
+                                    className="text-gray-600 dark:text-violet-500 font-mono text-xs uppercase tracking-wider">功耗</span>
                                 <span
-                                    className="font-medium text-gray-900 dark:text-cyan-200">{gpu.powerUsage?.toFixed(1)}W</span>
+                                    className="font-medium text-gray-900 dark:text-violet-200">{gpu.powerUsage?.toFixed(1)}W</span>
                             </div>
                             <div className="flex items-center justify-between">
                                 <span
-                                    className="text-gray-600 dark:text-cyan-500 font-mono text-xs uppercase tracking-wider">风扇转速</span>
+                                    className="text-gray-600 dark:text-violet-500 font-mono text-xs uppercase tracking-wider">风扇转速</span>
                                 <span
-                                    className="font-medium text-gray-900 dark:text-cyan-200">{gpu.fanSpeed?.toFixed(0)}%</span>
+                                    className="font-medium text-gray-900 dark:text-violet-200">{gpu.fanSpeed?.toFixed(0)}%</span>
                             </div>
                         </div>
                     </div>

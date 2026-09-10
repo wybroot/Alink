@@ -16,7 +16,7 @@ const SSHLoginMonitor: React.FC<SSHLoginMonitorProps> = ({agentId}) => {
                 <button
                     className={`px-4 py-2 text-sm font-medium transition-colors ${
                         activeTab === 'config'
-                            ? 'border-b-2 border-blue-500 text-blue-600'
+                            ? 'border-b-2 border-indigo-500 text-indigo-600'
                             : 'text-gray-600 hover:text-gray-900'
                     }`}
                     onClick={() => setActiveTab('config')}
@@ -26,7 +26,7 @@ const SSHLoginMonitor: React.FC<SSHLoginMonitorProps> = ({agentId}) => {
                 <button
                     className={`px-4 py-2 text-sm font-medium transition-colors ${
                         activeTab === 'events'
-                            ? 'border-b-2 border-blue-500 text-blue-600'
+                            ? 'border-b-2 border-indigo-500 text-indigo-600'
                             : 'text-gray-600 hover:text-gray-900'
                     }`}
                     onClick={() => setActiveTab('events')}

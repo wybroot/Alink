@@ -54,7 +54,7 @@ export const TimeRangeSelector = ({
                     }
                     onChange(nextValue);
                 }}
-                className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:border-blue-300 dark:hover:border-blue-600 focus:border-blue-400 dark:focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-500/30 px-3 py-1.5 text-xs font-medium transition-all whitespace-nowrap"
+                className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:border-indigo-300 dark:hover:border-indigo-600 focus:border-indigo-400 dark:focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 dark:focus:ring-indigo-500/30 px-3 py-1.5 text-xs font-medium transition-all whitespace-nowrap"
             >
                 {showCustomOption && (
                     <option value="custom" disabled>
@@ -76,7 +76,7 @@ export const TimeRangeSelector = ({
                         type="datetime-local"
                         value={customStart}
                         onChange={(event) => setCustomStart(event.target.value)}
-                        className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:border-blue-400 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-500/30 px-2 py-1 text-xs font-medium"
+                        className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:border-indigo-400 dark:focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:focus:ring-indigo-500/30 px-2 py-1 text-xs font-medium"
                     />
                     <span className="text-xs font-medium text-slate-600 dark:text-slate-300">
                         至
@@ -85,7 +85,7 @@ export const TimeRangeSelector = ({
                         type="datetime-local"
                         value={customEnd}
                         onChange={(event) => setCustomEnd(event.target.value)}
-                        className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:border-blue-400 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-500/30 px-2 py-1 text-xs font-medium"
+                        className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:border-indigo-400 dark:focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:focus:ring-indigo-500/30 px-2 py-1 text-xs font-medium"
                     />
                     <button
                         type="button"
@@ -98,7 +98,7 @@ export const TimeRangeSelector = ({
                         className={cn(
                             "rounded-lg border px-3 py-1.5 text-xs font-medium transition-all whitespace-nowrap",
                             canApply
-                                ? "border-blue-500 dark:border-blue-500 bg-blue-500 dark:bg-blue-600 text-white shadow-sm hover:bg-blue-600 dark:hover:bg-blue-700"
+                                ? "border-indigo-500 dark:border-indigo-500 bg-indigo-500 dark:bg-indigo-600 text-white shadow-sm hover:bg-indigo-600 dark:hover:bg-indigo-700"
                                 : "border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 cursor-not-allowed"
                         )}
                     >
