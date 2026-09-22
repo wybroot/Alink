@@ -72,34 +72,33 @@ const PublicHeader = () => {
     return (
         <>
             <header
-                className="border-b border-slate-200 dark:border-violet-300/20 bg-white/80 dark:bg-[#0c071d]/85 shadow-[0_10px_38px_rgba(0,0,0,0.22)] backdrop-blur-xl fixed top-0 left-0 right-0 z-40 transition-colors duration-300">
-                <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-                    <div className="flex items-center gap-8">
+                className="fixed inset-x-0 top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur-xl transition-colors duration-300 dark:border-[#303936] dark:bg-[#151a18]/95">
+                <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-[72px] sm:px-6 lg:px-8">
+                    <div className="flex items-center gap-6 lg:gap-10">
                         <Link to={'/'}>
-                            <div className="flex items-center gap-3 group cursor-pointer">
-                                <div className="relative">
+                            <div className="group flex cursor-pointer items-center gap-3">
+                                <div className="relative flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 bg-slate-50 dark:border-[#35413e] dark:bg-[#202825]">
                                     <img
-                                        src={"/api/logo"}
-                                        className="h-8 w-8 sm:h-9 sm:w-9 object-contain rounded-md"
+                                        src={"/api/logo?v=3"}
+                                        className="h-8 w-8 rounded object-contain"
                                         alt={'logo'}
                                         onError={(e) => {
-                                            e.currentTarget.src = '/logo.png';
+                                            e.currentTarget.src = '/logo.svg';
                                         }}
                                     />
                                 </div>
                                 <div>
-                                    <h1 className="text-xl sm:text-2xl font-black tracking-[0.14em] text-transparent bg-clip-text bg-gradient-to-r from-violet-500 via-sky-500 to-violet-500 dark:from-violet-300 dark:via-sky-400 dark:to-violet-400 uppercase italic">
-                                        {leftName}<span className="text-slate-800 dark:text-white">{rightName}</span>
+                                    <h1 className="text-base font-semibold text-slate-900 dark:text-slate-100 sm:text-lg">
+                                        {leftName}<span>{rightName}</span>
                                     </h1>
-                                    <p className="text-xs text-slate-500 dark:text-violet-500 font-mono tracking-[0.3em] uppercase">
+                                    <p className="mt-0.5 hidden text-xs text-slate-500 dark:text-slate-400 sm:block">
                                         {window.SystemConfig?.SystemNameZh}
                                     </p>
                                 </div>
                             </div>
                         </Link>
 
-                        {/* HUD Navigation - Desktop Only */}
-                        <div className="hidden md:flex items-center gap-8">
+                        <div className="hidden items-center gap-1 md:flex">
                             {[
                                 {id: 'servers', icon: ServerIcon, label: '设备监控', to: '/'},
                                 {id: 'monitors', icon: Activity, label: '服务监控', to: '/monitors'}
@@ -107,17 +106,13 @@ const PublicHeader = () => {
                                 <Link to={tab.to} key={tab.id}>
                                     <button
                                         className={`
-                          relative group flex items-center gap-2 py-2 text-xs font-bold tracking-widest transition-colors cursor-pointer font-mono uppercase
-                          ${activeTab === tab.id ? 'text-indigo-600 dark:text-violet-500' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-violet-200'}
+                          group flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer
+                          ${activeTab === tab.id ? 'bg-teal-50 text-teal-800 dark:bg-teal-400/10 dark:text-teal-200' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-white/5 dark:hover:text-slate-100'}
                         `}
                                     >
                                         <tab.icon
-                                            className={`w-4 h-4 ${activeTab === tab.id ? 'text-indigo-600 dark:text-violet-500' : 'text-slate-400 dark:text-slate-600 group-hover:text-indigo-500 dark:group-hover:text-violet-200'}`}/>
+                                            className={`h-4 w-4 ${activeTab === tab.id ? 'text-teal-700 dark:text-teal-300' : 'text-slate-400'}`}/>
                                         {tab.label}
-
-                                        {/* Active Indicator (Underline Glow) */}
-                                        <span
-                                            className={`absolute -bottom-1 left-0 w-full h-[2px] bg-indigo-600 dark:bg-violet-500 shadow-[0_0_10px_rgba(79,70,229,0.8)] dark:shadow-[0_0_10px_rgba(167,139,250,0.8)] transition-transform duration-300 origin-left ${activeTab === tab.id ? 'scale-x-100' : 'scale-x-0'}`}></span>
                                     </button>
                                 </Link>
                             ))}
@@ -126,18 +121,18 @@ const PublicHeader = () => {
 
                     {/* Desktop Right Section */}
                     <div className="hidden md:flex items-center gap-2">
-                        <div className="hidden lg:flex flex-col items-end">
+                        <div className="hidden flex-col items-end lg:flex">
                             <span
-                                className="text-xs font-mono text-slate-800 dark:text-violet-500 font-bold">{currentTime.toLocaleTimeString()}</span>
+                                className="text-xs font-semibold text-slate-700 dark:text-slate-200">{currentTime.toLocaleTimeString()}</span>
                             <span
-                                className="text-xs text-slate-500 dark:text-violet-500 font-mono tracking-widest">{currentTime.toLocaleDateString()}</span>
+                                className="text-[11px] text-slate-400 dark:text-slate-500">{currentTime.toLocaleDateString()}</span>
                         </div>
-                        <div className="h-6 w-[1px] bg-slate-300 dark:bg-violet-900/50 hidden lg:block"></div>
+                        <div className="hidden h-6 w-px bg-slate-200 dark:bg-[#35413e] lg:block"></div>
 
                         {/* 主题切换按钮 - Desktop */}
                         <button
                             onClick={() => setTheme(appliedTheme === 'dark' ? 'light' : 'dark')}
-                            className="flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md transition-all text-slate-600 dark:text-violet-400 hover:bg-slate-100 dark:hover:bg-violet-500/10"
+                            className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-white/5"
                             title={appliedTheme === 'dark' ? '切换到浅色模式' : '切换到暗黑模式'}
                         >
                             {appliedTheme === 'dark' ? (
@@ -151,20 +146,20 @@ const PublicHeader = () => {
                         {isLoggedIn ? (
                             <a
                                 href="/admin"
-                                className="flex items-center gap-2 px-4 py-2 bg-violet-50 dark:bg-violet-500/10 hover:bg-violet-100 dark:hover:bg-violet-500/20 text-violet-500 rounded-md border border-violet-500/20 transition-all text-xs font-bold tracking-wider uppercase group"
+                                className="group flex items-center gap-2 rounded-md bg-teal-700 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-teal-800 dark:bg-teal-400 dark:text-[#10201d] dark:hover:bg-teal-300"
                                 target="_blank"
                             >
                                 <Settings className="w-3 h-3 group-hover:rotate-90 transition-transform"/>
-                                <span>Admin</span>
+                                <span>管理后台</span>
                             </a>
                         ) : (
                             <a
                                 href="/login"
-                                className="flex items-center gap-2 px-4 py-2 bg-violet-50 dark:bg-violet-500/10 hover:bg-violet-100 dark:hover:bg-violet-500/20 text-violet-500 rounded-md border border-violet-500/20 transition-all text-xs font-bold tracking-wider uppercase group"
+                                className="group flex items-center gap-2 rounded-md bg-teal-700 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-teal-800 dark:bg-teal-400 dark:text-[#10201d] dark:hover:bg-teal-300"
                                 target="_blank"
                             >
                                 <LogIn className="w-3 h-3"/>
-                                <span>Login</span>
+                                <span>登录</span>
                             </a>
                         )}
                     </div>
@@ -172,7 +167,7 @@ const PublicHeader = () => {
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        className="md:hidden p-2 text-violet-500 hover:bg-violet-500/10 rounded transition-colors"
+                        className="rounded-md p-2 text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-white/5 md:hidden"
                         aria-label="Toggle menu"
                     >
                         {mobileMenuOpen ? (
@@ -182,14 +177,13 @@ const PublicHeader = () => {
                         )}
                     </button>
                 </div>
-                <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-violet-500/30 to-transparent"></div>
             </header>
 
             {/* Mobile Menu */}
             {mobileMenuOpen && (
                 <div
-                    className="md:hidden fixed inset-0 top-20 bg-white/95 dark:bg-[#0c071d]/95 backdrop-blur-xl z-30 animate-in slide-in-from-top">
-                    <div className="flex flex-col p-4 gap-4">
+                    className="fixed inset-0 top-16 z-30 bg-white/98 backdrop-blur-xl dark:bg-[#151a18]/98 sm:top-[72px] md:hidden">
+                    <div className="flex flex-col gap-3 p-4">
                         {/* Mobile Navigation */}
                         {[
                             {id: 'servers', icon: ServerIcon, label: '设备监控', to: '/'},
@@ -200,25 +194,25 @@ const PublicHeader = () => {
                                 key={tab.id}
                                 onClick={() => setMobileMenuOpen(false)}
                                 className={`
-                                    flex items-center gap-3 p-4 rounded-lg border transition-all
+                                    flex items-center gap-3 rounded-md border p-4 transition-colors
                                     ${activeTab === tab.id
-                                    ? 'bg-indigo-50 dark:bg-violet-500/20 border-indigo-500 dark:border-violet-500/80 text-indigo-600 dark:text-violet-500'
-                                    : 'bg-slate-50/50 dark:bg-violet-500/5 border-slate-200 dark:border-violet-500/30 text-slate-600 dark:text-slate-400 hover:bg-indigo-50 dark:hover:bg-violet-500/10 hover:border-indigo-300 dark:hover:border-violet-500/50'
+                                    ? 'border-teal-200 bg-teal-50 text-teal-800 dark:border-teal-400/30 dark:bg-teal-400/10 dark:text-teal-200'
+                                    : 'border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100 dark:border-[#303936] dark:bg-[#191e1c] dark:text-slate-300 dark:hover:bg-[#222927]'
                                 }
                                 `}
                             >
                                 <tab.icon className="w-5 h-5"/>
-                                <span className="font-bold tracking-wider">{tab.label}</span>
+                                <span className="font-semibold">{tab.label}</span>
                             </Link>
                         ))}
 
                         {/* Divider */}
-                        <div className="h-[1px] bg-slate-200 dark:bg-violet-900/50 my-2"></div>
+                        <div className="my-2 h-px bg-slate-200 dark:bg-[#303936]"></div>
 
                         {/* Mobile Theme Toggle Button */}
                         <button
                             onClick={() => setTheme(appliedTheme === 'dark' ? 'light' : 'dark')}
-                            className="w-full flex items-center justify-center gap-3 p-4 bg-violet-50 dark:bg-violet-500/10 hover:bg-violet-100 dark:hover:bg-violet-500/20 text-violet-500 rounded-lg transition-all font-bold tracking-wider uppercase"
+                            className="flex w-full items-center justify-center gap-3 rounded-md border border-slate-200 bg-white p-4 font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-[#303936] dark:bg-[#191e1c] dark:text-slate-200 dark:hover:bg-[#222927]"
                         >
                             {appliedTheme === 'dark' ? (
                                 <>
@@ -238,7 +232,7 @@ const PublicHeader = () => {
                             <a
                                 href="/admin"
                                 target="_blank"
-                                className="flex items-center justify-center gap-3 p-4 bg-violet-50 dark:bg-violet-500/10 hover:bg-violet-100 dark:hover:bg-violet-500/20 text-violet-500 rounded-lg transition-all font-bold tracking-wider uppercase"
+                                className="flex items-center justify-center gap-3 rounded-md bg-teal-700 p-4 font-semibold text-white transition-colors hover:bg-teal-800 dark:bg-teal-400 dark:text-[#10201d]"
                             >
                                 <Settings className="w-5 h-5"/>
                                 <span>管理后台</span>
@@ -247,7 +241,7 @@ const PublicHeader = () => {
                             <a
                                 href="/login"
                                 target="_blank"
-                                className="flex items-center justify-center gap-3 p-4 bg-violet-50 dark:bg-violet-500/10 hover:bg-violet-100 dark:hover:bg-violet-500/20 text-violet-500 rounded-lg transition-all font-bold tracking-wider uppercase"
+                                className="flex items-center justify-center gap-3 rounded-md bg-teal-700 p-4 font-semibold text-white transition-colors hover:bg-teal-800 dark:bg-teal-400 dark:text-[#10201d]"
                             >
                                 <LogIn className="w-5 h-5"/>
                                 <span>登录</span>

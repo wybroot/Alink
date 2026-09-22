@@ -6,12 +6,12 @@ import (
 	"os"
 	"time"
 
+	"github.com/go-orz/orz"
+	"github.com/spf13/cobra"
 	"github.com/wybroot/pikaw/internal"
 	"github.com/wybroot/pikaw/internal/config"
 	v0_0_13 "github.com/wybroot/pikaw/internal/migrate/v0_0_13"
 	"github.com/wybroot/pikaw/internal/vmclient"
-	"github.com/go-orz/orz"
-	"github.com/spf13/cobra"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 
@@ -23,8 +23,8 @@ var (
 	configFile string
 	rootCmd    = &cobra.Command{
 		Use:   "pikaw-server",
-		Short: "PikaW 服务器监控系统",
-		Long:  `PikaW 是一个轻量级的服务器监控系统，支持多探针部署和实时监控。`,
+		Short: "Alink 服务器监控系统",
+		Long:  `Alink 是一个轻量级的服务器监控系统，支持多探针部署和实时监控。`,
 		Run: func(cmd *cobra.Command, args []string) {
 			internal.Run(configFile)
 		},
@@ -32,8 +32,8 @@ var (
 
 	serveCmd = &cobra.Command{
 		Use:   "serve",
-		Short: "启动 PikaW 服务器",
-		Long:  `启动 PikaW HTTP 服务器，提供 Web 界面和 API 服务。`,
+		Short: "启动 Alink 服务器",
+		Long:  `启动 Alink HTTP 服务器，提供 Web 界面和 API 服务。`,
 		Run: func(cmd *cobra.Command, args []string) {
 			internal.Run(configFile)
 		},
@@ -67,7 +67,7 @@ func main() {
 
 // runMigration 执行数据迁移
 func runMigration(configPath string) {
-	fmt.Println("=== PikaW 数据迁移工具 ===")
+	fmt.Println("=== Alink 数据迁移工具 ===")
 	fmt.Println("配置文件:", configPath)
 	fmt.Println()
 

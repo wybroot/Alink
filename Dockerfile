@@ -17,7 +17,7 @@ ARG TARGETARCH
 COPY ./bin/pikaw-linux-${TARGETARCH} ./pikaw
 COPY ./bin/agents ./bin/agents
 COPY ./web/dist ./web/dist
-COPY ./web/public/logo.png ./web/public/logo.png
+COPY ./web/public/logo.svg ./web/public/logo.svg
 
 # 暴露端口
 EXPOSE 8080

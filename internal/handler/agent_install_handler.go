@@ -6,10 +6,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/wybroot/pikaw/internal/assets"
-	"github.com/wybroot/pikaw/pkg/version"
 	"github.com/go-orz/orz"
 	"github.com/labstack/echo/v4"
+	"github.com/wybroot/pikaw/internal/assets"
+	"github.com/wybroot/pikaw/pkg/version"
 	"go.uber.org/zap"
 )
 
@@ -228,7 +228,7 @@ register_agent() {
 
 # 主流程
 main() {
-    echo_info "开始安装 PikaW Agent..."
+    echo_info "开始安装 Alink Agent..."
     echo ""
 
     detect_platform

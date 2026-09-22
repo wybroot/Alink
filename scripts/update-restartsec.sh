@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# PikaW Agent RestartSec 升级脚本
+# Alink Agent RestartSec 升级脚本
 # 用途: 将 systemd 服务的 RestartSec 从 120 改为 5
 # 使用: curl -fsSL https://raw.githubusercontent.com/wybroot/pikaw/master/scripts/update-restartsec.sh | sudo bash
 
@@ -16,7 +16,7 @@ SERVICE_NAME="pikaw-agent"
 SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
 
 echo "================================================"
-echo "PikaW Agent RestartSec 升级脚本"
+echo "Alink Agent RestartSec 升级脚本"
 echo "================================================"
 echo ""
 

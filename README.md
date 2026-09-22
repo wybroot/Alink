@@ -1,4 +1,4 @@
-# PikaW 探针监控系统
+# Alink 探针监控系统
 
 <div align="center">
 
@@ -10,7 +10,7 @@
 
 ## 简介
 
-PikaW 是一个轻量级的探针监控系统，支持实时数据采集、存储和查询。系统采用 WebSocket 进行探针与服务端的通信，使用 VictoriaMetrics 存储时序指标数据，支持 PostgreSQL 和 SQLite 两种数据库方案。除了基础监控功能外，还提供 Linux 应急响应和安全基线检查能力，帮助快速发现和分析系统安全风险。
+Alink 是一个轻量级的探针监控系统，支持实时数据采集、存储和查询。系统采用 WebSocket 进行探针与服务端的通信，使用 VictoriaMetrics 存储时序指标数据，支持 PostgreSQL 和 SQLite 两种数据库方案。除了基础监控功能外，还提供 Linux 应急响应和安全基线检查能力，帮助快速发现和分析系统安全风险。
 
 
 ## 功能特性
@@ -84,5 +84,3 @@ docker-compose -f docker-compose.postgresql.yml up -d
 
 - Docker 20.10+
 - Docker Compose 1.29+
-
-基于pika监控二开，原项目地址https://github.com/dushixiang/pika.git

@@ -42,14 +42,14 @@ export const ServerHero = ({agent, latestMetrics, onBack}: ServerHeroProps) => {
     ];
 
     return (
-        <CyberCard className={'p-6'}>
+        <CyberCard className={'p-5 sm:p-6'}>
             <div className="flex flex-col gap-6">
                 <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                     <div className="space-y-4">
                         <button
                             type="button"
                             onClick={onBack}
-                            className="group inline-flex items-center gap-2 text-xs font-bold font-mono uppercase tracking-[0.3em] dark:text-violet-500 transition dark:hover:text-violet-500"
+                            className="group inline-flex items-center gap-2 text-xs font-medium text-slate-500 transition-colors hover:text-teal-700 dark:text-slate-400 dark:hover:text-teal-300"
                         >
                             <ArrowLeft className="h-4 w-4 transition group-hover:-translate-x-0.5"/>
                             返回概览
@@ -57,10 +57,10 @@ export const ServerHero = ({agent, latestMetrics, onBack}: ServerHeroProps) => {
                         <div className="flex items-start gap-4">
                             <div>
                                 <div className="flex flex-wrap items-center gap-3">
-                                    <h1 className="text-3xl font-bold dark:text-violet-100">{displayName}</h1>
+                                    <h1 className="text-2xl font-semibold text-slate-900 dark:text-slate-100 sm:text-3xl">{displayName}</h1>
                                     <StatusBadge status={agent.status === 1 ? 'up' : 'down'}/>
                                 </div>
-                                <p className="mt-2 text-sm dark:text-violet-500 font-mono">
+                                <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
                                     {[agent.hostname].filter(Boolean).join(' · ') || '-'}
                                 </p>
                             </div>
@@ -74,11 +74,11 @@ export const ServerHero = ({agent, latestMetrics, onBack}: ServerHeroProps) => {
                     </div>
                 </div>
                 <div
-                    className="flex flex-wrap items-center gap-3 text-xs dark:text-violet-500 font-mono pt-4 border-t border-violet-900/30">
+                    className="flex flex-wrap items-center gap-3 border-t border-slate-200 pt-4 text-xs text-slate-500 dark:border-[#303936] dark:text-slate-400">
                     <span>探针 ID：{agent.id}</span>
-                    <span className="hidden h-1 w-1 rounded-full bg-violet-900 sm:inline-block"/>
+                    <span className="hidden h-1 w-1 rounded-full bg-slate-300 dark:bg-slate-700 sm:inline-block"/>
                     <span>版本：{agent.version || '-'}</span>
-                    <span className="hidden h-1 w-1 rounded-full bg-violet-900 sm:inline-block"/>
+                    <span className="hidden h-1 w-1 rounded-full bg-slate-300 dark:bg-slate-700 sm:inline-block"/>
                     <span>网络累计：{networkSummary}</span>
                 </div>
             </div>

@@ -250,7 +250,7 @@ const MonitorList = () => {
                 ]}
             />
 
-            <div className="command-panel command-panel--scan bg-white dark:bg-[#140b2b]/90 rounded-lg border border-gray-100 dark:border-violet-300/20 shadow-sm p-4 sm:p-6 space-y-4">
+            <div className="command-panel space-y-4 rounded-lg p-4 sm:p-6">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <Input.Search
                         placeholder="按名称或目标搜索"

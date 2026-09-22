@@ -1,7 +1,6 @@
 import type {FC} from 'react';
 import {ArrowDown, ArrowUp, Network} from 'lucide-react';
 import {formatBytes, formatSpeed} from '@/lib/format.ts';
-import {cn} from "@/lib/utils.ts";
 
 interface NetworkStatCardProps {
     uploadRate: number;
@@ -17,36 +16,29 @@ const NetworkStatCard: FC<NetworkStatCardProps> = ({
     downloadTotal
 }) => {
     return (
-        <div className={cn(
-            "command-panel command-panel--scan relative overflow-hidden rounded-lg border p-5",
-            'dark:border-indigo-500/30 dark:bg-indigo-500/5 dark:text-indigo-400',
-            'bg-white/80 backdrop-blur-md border-slate-200 shadow-sm',
-        )}>
-            <div className="absolute -right-4 -bottom-4 opacity-10 rotate-[-15deg]">
-                <Network className="w-16 sm:w-24 h-16 sm:h-24"/>
-            </div>
-            <div className="relative z-10 flex justify-between items-start">
+        <div className="command-panel relative rounded-lg p-4 sm:p-5">
+            <div className="relative z-10 flex items-start justify-between gap-3">
                 <div className="flex-1 min-w-0">
-                    <div className="text-xs font-bold font-mono uppercase tracking-widest opacity-70 mb-3">网络统计</div>
-                    <div className="space-y-0.5 text-xs sm:text-xs font-mono">
+                    <div className="mb-3 text-xs font-medium text-slate-500 dark:text-slate-400">实时网络</div>
+                    <div className="space-y-1 text-xs">
                         <div className="flex items-center gap-1.5 sm:gap-2">
-                            <ArrowUp className="w-3 h-3 dark:text-indigo-400 text-indigo-600 flex-shrink-0"/>
-                            <span className="dark:text-violet-300 truncate">{formatSpeed(uploadRate)}</span>
-                            <span className="dark:text-violet-500 text-gray hidden sm:inline">
+                            <ArrowUp className="h-3 w-3 flex-shrink-0 text-blue-600 dark:text-blue-300"/>
+                            <span className="truncate font-medium text-slate-800 dark:text-slate-200">{formatSpeed(uploadRate)}</span>
+                            <span className="hidden text-slate-400 sm:inline dark:text-slate-500">
                                 ({formatBytes(uploadTotal)})
                             </span>
                         </div>
                         <div className="flex items-center gap-1.5 sm:gap-2">
-                            <ArrowDown className="w-3 h-3 dark:text-lime-400 text-lime-600 flex-shrink-0"/>
-                            <span className="dark:text-violet-300 truncate">{formatSpeed(downloadRate)}</span>
-                            <span className="dark:text-violet-500 text-gray-700 hidden sm:inline">
+                            <ArrowDown className="h-3 w-3 flex-shrink-0 text-teal-700 dark:text-teal-300"/>
+                            <span className="truncate font-medium text-slate-800 dark:text-slate-200">{formatSpeed(downloadRate)}</span>
+                            <span className="hidden text-slate-400 sm:inline dark:text-slate-500">
                                 ({formatBytes(downloadTotal)})
                             </span>
                         </div>
                     </div>
                 </div>
-                <div className="p-3 border border-current/15 bg-current/5">
-                    <Network className="w-6 h-6"/>
+                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-blue-50 text-blue-700 dark:bg-blue-400/10 dark:text-blue-300">
+                    <Network className="h-5 w-5"/>
                 </div>
             </div>
         </div>

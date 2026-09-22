@@ -5,11 +5,11 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"github.com/go-orz/orz"
+	"github.com/labstack/echo/v4"
 	"github.com/wybroot/pikaw/internal/assets"
 	"github.com/wybroot/pikaw/internal/models"
 	"github.com/wybroot/pikaw/internal/service"
-	"github.com/go-orz/orz"
-	"github.com/labstack/echo/v4"
 	"go.uber.org/zap"
 )
 
@@ -162,7 +162,7 @@ func (h *PropertyHandler) GetLogo(c echo.Context) error {
 
 	// 设置响应头
 	c.Response().Header().Set("Content-Type", contentType)
-	c.Response().Header().Set("Cache-Control", "public, max-age=600") // 缓存 10 分钟
+	c.Response().Header().Set("Cache-Control", "no-cache")
 
 	return c.Blob(http.StatusOK, contentType, imageData)
 }

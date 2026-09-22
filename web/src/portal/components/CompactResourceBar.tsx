@@ -6,10 +6,9 @@ const CompactResourceBar = ({value, label, subtext, icon: Icon, color = "bg-viol
     const isCritical = value > 90;
     const isWarning = value > 75;
 
-    // 颜色定义 (Hex codes for precise control)
     let barColor = "";
     let iconClass = "";
-    let textClass = "dark:text-violet-50"; // 默认高亮白/青
+    let textClass = "text-slate-700 dark:text-slate-200";
 
     if (isCritical) {
         barColor = "bg-rose-500";
@@ -19,15 +18,18 @@ const CompactResourceBar = ({value, label, subtext, icon: Icon, color = "bg-viol
         barColor = "bg-amber-500";
         iconClass = "text-amber-600 dark:text-amber-400";
         textClass = "text-amber-400";
-    } else if (color.includes("purple")) {
-        barColor = "bg-fuchsia-500";
-        iconClass = "text-fuchsia-600 dark:text-fuchsia-400";
-    } else if (color.includes("blue")) {
-        barColor = "bg-indigo-500";
-        iconClass = "text-indigo-600 dark:text-indigo-400";
+    } else if (color.includes("fuchsia") || color.includes("purple")) {
+        barColor = "bg-blue-500";
+        iconClass = "text-blue-600 dark:text-blue-300";
+    } else if (color.includes("blue") || color.includes("indigo")) {
+        barColor = "bg-teal-600";
+        iconClass = "text-teal-700 dark:text-teal-300";
+    } else if (color.includes("lime")) {
+        barColor = "bg-amber-500";
+        iconClass = "text-amber-600 dark:text-amber-300";
     } else {
-        barColor = "bg-violet-500";
-        iconClass = "text-violet-600 dark:text-violet-400";
+        barColor = "bg-teal-600";
+        iconClass = "text-teal-700 dark:text-teal-300";
     }
 
     return (
@@ -35,39 +37,20 @@ const CompactResourceBar = ({value, label, subtext, icon: Icon, color = "bg-viol
             <Tooltip.Provider delayDuration={200}>
                 <Tooltip.Root>
                     <Tooltip.Trigger asChild>
-                        <div className="flex items-center w-full h-5 gap-2 text-xs font-mono">
-                            {/* Icon & Label */}
-                            <div className={`flex items-center gap-2 w-10 flex-shrink-0 ${iconClass}`}>
+                        <div className="flex h-6 w-full items-center gap-2 text-xs">
+                            <div className={`flex w-12 flex-shrink-0 items-center gap-1.5 ${iconClass}`}>
                                 <Icon className="w-3.5 h-3.5" strokeWidth={2}/>
-                                <span className="text-xs font-bold tracking-wider opacity-80">{label}</span>
+                                <span className="text-xs font-semibold">{label}</span>
                             </div>
 
-                            {/* Track Container */}
-                            <div className="w-[100px] h-2 dark:bg-[#121217] bg-[#e2e8f0] relative border border-white/5 overflow-hidden">
-
-                                {/* Scale Marks Background (The "Ruler" effect) */}
+                            <div className="relative h-1.5 min-w-16 flex-1 overflow-hidden rounded-full bg-slate-200 dark:bg-[#303936]">
                                 <div
-                                    className="absolute inset-0 w-full h-full opacity-20 pointer-events-none z-0"
-                                    style={{
-                                        backgroundImage: 'linear-gradient(90deg, #94a3b8 1px, transparent 1px)',
-                                        backgroundSize: '10% 100%'
-                                    }}
-                                ></div>
-
-                                <div
-                                    className={`h-full relative transition-all duration-500 ease-out z-10 ${barColor}`}
-                                    style={{
-                                        width: `${Math.min(value, 100)}%`,
-                                        backgroundImage: 'linear-gradient(45deg,rgba(0,0,0,.2) 25%,transparent 25%,transparent 50%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.2) 75%,transparent 75%,transparent)',
-                                        backgroundSize: '4px 4px'
-                                    }}
-                                >
-                                    <div
-                                        className="absolute right-0 top-0 bottom-0 w-[1.5px] bg-red-500 shadow-[0_0_8px_red-500] dark:bg-white dark:shadow-[0_0_8px_white]"></div>
-                                </div>
+                                    className={`relative z-10 h-full rounded-full transition-all duration-500 ease-out ${barColor}`}
+                                    style={{width: `${Math.min(value, 100)}%`}}
+                                />
                             </div>
                             <div
-                                className={cn(`w-10 font-medium text-xs cursor-pointer`, textClass)}>
+                                className={cn('w-11 cursor-pointer text-right text-xs font-medium', textClass)}>
                                 {value.toFixed(1)}%
                             </div>
                         </div>

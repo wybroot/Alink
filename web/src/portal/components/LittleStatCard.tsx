@@ -9,10 +9,10 @@ const LittleStatCard = ({
 }) => (
     <div
         key={label}
-        className="rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-violet-900/50 p-4 text-left hover:border-slate-300 dark:hover:border-violet-700/50 transition"
+        className="rounded-md border border-slate-200 bg-slate-50 p-3 text-left transition-colors hover:border-slate-300 dark:border-[#303936] dark:bg-[#222927] dark:hover:border-[#46534f] sm:p-4"
     >
-        <p className="text-sm uppercase tracking-[0.3em] text-gray-700 dark:text-violet-500 font-mono font-bold">{label}</p>
-        <p className="mt-2 text-base font-semibold text-slate-800 dark:text-violet-100">{value}</p>
+        <p className="text-xs font-medium text-slate-500 dark:text-slate-400">{label}</p>
+        <p className="mt-2 break-words text-sm font-semibold text-slate-800 dark:text-slate-100 sm:text-base">{value}</p>
     </div>
 );
 

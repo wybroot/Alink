@@ -6,11 +6,11 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/go-orz/cache"
 	"github.com/wybroot/pikaw/internal/assets"
 	"github.com/wybroot/pikaw/internal/models"
 	"github.com/wybroot/pikaw/internal/repo"
 	"github.com/wybroot/pikaw/pkg/version"
-	"github.com/go-orz/cache"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 )
@@ -345,8 +345,8 @@ func (s *PropertyService) InitializeDefaultConfigs(ctx context.Context) error {
 			ID:   PropertyIDSystemConfig,
 			Name: "系统配置",
 			Value: models.SystemConfig{
-				SystemNameZh: "PikaW 监控",
-				SystemNameEn: "PikaW Monitor",
+				SystemNameZh: "Alink 监控",
+				SystemNameEn: "Alink Monitor",
 				LogoBase64:   assets.DefaultLogoBase64(),
 				ICPCode:      "",
 				DefaultView:  "grid",

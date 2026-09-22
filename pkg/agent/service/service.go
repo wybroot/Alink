@@ -10,13 +10,13 @@ import (
 	"strings"
 	"syscall"
 
+	"github.com/kardianos/service"
 	"github.com/wybroot/pikaw/pkg/agent"
 	"github.com/wybroot/pikaw/pkg/agent/config"
 	"github.com/wybroot/pikaw/pkg/agent/id"
 	"github.com/wybroot/pikaw/pkg/agent/sshmonitor"
 	"github.com/wybroot/pikaw/pkg/agent/sysutil"
 	"github.com/wybroot/pikaw/pkg/agent/updater"
-	"github.com/kardianos/service"
 )
 
 // program 实现 service.Interface
@@ -72,7 +72,7 @@ func (p *program) Start(s service.Service) error {
 		Compress:   p.cfg.Agent.LogCompress,
 	})
 
-	slog.Info("PikaW Agent 服务启动中...")
+	slog.Info("Alink Agent 服务启动中...")
 
 	// 初始化系统配置（Linux ICMP 权限等）
 	configureICMP()
@@ -88,7 +88,7 @@ func (p *program) Start(s service.Service) error {
 
 // Stop 停止服务
 func (p *program) Stop(s service.Service) error {
-	slog.Info("PikaW Agent 服务停止中...")
+	slog.Info("Alink Agent 服务停止中...")
 
 	if p.cancel != nil {
 		p.cancel()
@@ -98,7 +98,7 @@ func (p *program) Stop(s service.Service) error {
 		p.agent.Stop()
 	}
 
-	slog.Info("PikaW Agent 服务已停止")
+	slog.Info("Alink Agent 服务已停止")
 	return nil
 }
 
@@ -178,8 +178,8 @@ func NewServiceManager(cfg *config.Config) (*ServiceManager, error) {
 	// 配置服务
 	svcConfig := &service.Config{
 		Name:        "pikaw-agent",
-		DisplayName: "PikaW Agent",
-		Description: "PikaW 监控探针 - 采集系统性能指标并上报到服务端",
+		DisplayName: "Alink Agent",
+		Description: "Alink 监控探针 - 采集系统性能指标并上报到服务端",
 		Arguments:   []string{"run", "--config", cfg.Path},
 		Executable:  execPath,
 		Option:      options,

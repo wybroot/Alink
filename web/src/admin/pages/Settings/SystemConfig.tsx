@@ -129,7 +129,7 @@ const SystemConfigComponent = () => {
         if (logoPreview) {
             return logoPreview;
         }
-        return '/logo.png';
+        return '/logo.svg';
     };
 
     if (isLoading) {
@@ -171,7 +171,7 @@ const SystemConfigComponent = () => {
                                     { max: 50, message: '系统名称不能超过 50 个字符' },
                                 ]}
                             >
-                                <Input placeholder="例如：PikaW Monitor" />
+                                <Input placeholder="例如：Alink Monitor" />
                             </Form.Item>
 
                             <Form.Item
@@ -190,7 +190,7 @@ const SystemConfigComponent = () => {
                                     { max: 50, message: '系统名称不能超过 50 个字符' },
                                 ]}
                             >
-                                <Input placeholder="例如：PikaW 监控" />
+                                <Input placeholder="例如：Alink 监控" />
                             </Form.Item>
                         </div>
 
@@ -302,20 +302,22 @@ const SystemConfigComponent = () => {
                                 }
 
                                 return (
-                                    <div className="flex items-center gap-3 p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
-                                        <img
-                                            src={getLogoUrl()}
-                                            alt="Logo 预览"
-                                            className="h-8 w-8 sm:h-9 sm:w-9 object-contain rounded-md"
-                                            onError={(e) => {
-                                                e.currentTarget.src = '/logo.png';
-                                            }}
-                                        />
+                                    <div className="flex items-center gap-3 rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-[#35413e] dark:bg-[#191e1c]">
+                                        <div className="flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 bg-white dark:border-[#35413e] dark:bg-[#222927]">
+                                            <img
+                                                src={getLogoUrl()}
+                                                alt="Logo 预览"
+                                                className="h-8 w-8 rounded object-contain"
+                                                onError={(e) => {
+                                                    e.currentTarget.src = '/logo.svg';
+                                                }}
+                                            />
+                                        </div>
                                         <div>
-                                            <h1 className="text-2xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-violet-500 via-indigo-500 to-fuchsia-500 dark:from-violet-400 dark:via-indigo-400 dark:to-fuchsia-400 uppercase italic">
-                                                {leftName}<span className="text-slate-800 dark:text-white">{rightName}</span>
+                                            <h1 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
+                                                {leftName}<span>{rightName}</span>
                                             </h1>
-                                            <p className="text-xs text-slate-500 dark:text-violet-500 font-mono tracking-[0.3em] uppercase">
+                                            <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
                                                 {systemNameZh}
                                             </p>
                                         </div>

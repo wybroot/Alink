@@ -89,7 +89,7 @@ const MonitorList = () => {
     }
 
     return (
-        <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-4 sm:space-y-6">
+        <div className="mx-auto max-w-[1440px] space-y-4 px-3 py-4 sm:space-y-5 sm:px-6 sm:py-7 lg:px-8">
             {/* 统计卡片 */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4">
                 <StatBlock
@@ -125,15 +125,15 @@ const MonitorList = () => {
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
                 <div className="flex flex-wrap gap-4 items-center w-full md:w-auto">
                     {/* 显示模式切换 */}
-                    <div className="flex gap-1 bg-slate-100 dark:bg-black/40 p-1 rounded-lg border border-slate-200 dark:border-violet-900/50 items-center">
-                        <span className="text-xs text-gray-600 dark:text-violet-500 px-2 font-mono">卡片指标:</span>
+                    <div className="flex items-center gap-1 rounded-md border border-slate-200 bg-slate-100 p-1 dark:border-[#303936] dark:bg-[#191e1c]">
+                        <span className="px-2 text-xs text-slate-500 dark:text-slate-400">卡片指标</span>
                         <button
                             onClick={() => setDisplayMode('avg')}
                             className={cn(
-                                "px-3 py-1.5 text-xs font-medium rounded transition-all flex items-center gap-1 font-mono cursor-pointer",
+                                "flex cursor-pointer items-center gap-1 rounded px-3 py-1.5 text-xs font-medium transition-colors",
                                 displayMode === 'avg'
-                                    ? 'bg-gray-200 dark:bg-violet-500/20 text-gray-800 dark:text-violet-300 border border-gray-300 dark:border-violet-500/30'
-                                    : 'text-gray-600 dark:text-violet-500 hover:text-gray-800 dark:hover:text-violet-400'
+                                    ? 'bg-white text-teal-800 shadow-sm dark:bg-[#2a3431] dark:text-teal-200'
+                                    : 'text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200'
                             )}
                         >
                             <BarChart3 className="w-3 h-3"/> 平均
@@ -141,10 +141,10 @@ const MonitorList = () => {
                         <button
                             onClick={() => setDisplayMode('max')}
                             className={cn(
-                                "px-3 py-1.5 text-xs font-medium rounded transition-all flex items-center gap-1 font-mono cursor-pointer",
+                                "flex cursor-pointer items-center gap-1 rounded px-3 py-1.5 text-xs font-medium transition-colors",
                                 displayMode === 'max'
-                                    ? 'bg-gray-200 dark:bg-violet-500/20 text-gray-800 dark:text-violet-300 border border-gray-300 dark:border-violet-500/30'
-                                    : 'text-gray-600 dark:text-violet-500 hover:text-gray-800 dark:hover:text-violet-400'
+                                    ? 'bg-white text-teal-800 shadow-sm dark:bg-[#2a3431] dark:text-teal-200'
+                                    : 'text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200'
                             )}
                         >
                             <Maximize2 className="w-3 h-3"/> 最差(Max)
@@ -153,17 +153,15 @@ const MonitorList = () => {
                 </div>
 
                 {/* 搜索框 */}
-                <div className="relative w-full md:w-64 group">
-                    <div
-                        className="hidden dark:block absolute -inset-0.5 bg-gradient-to-r from-violet-500 to-indigo-600 rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                    <div className="relative flex items-center bg-white dark:bg-[#0d071a] rounded-lg border border-slate-200 dark:border-violet-900">
-                        <Search className="w-4 h-4 ml-3 text-gray-500 dark:text-violet-500"/>
+                <div className="group relative w-full md:w-72">
+                    <div className="relative flex items-center rounded-md border border-slate-200 bg-white focus-within:border-teal-600 dark:border-[#303936] dark:bg-[#191e1c] dark:focus-within:border-teal-400">
+                        <Search className="ml-3 h-4 w-4 text-slate-400"/>
                         <input
                             type="text"
                             placeholder="搜索服务名称或地址..."
                             value={searchKeyword}
                             onChange={(e) => setSearchKeyword(e.target.value)}
-                            className="w-full bg-transparent border-none text-xs text-gray-800 dark:text-violet-100 p-2.5 focus:ring-0 placeholder-gray-400 dark:placeholder-violet-600 font-mono focus:outline-none"
+                            className="w-full border-none bg-transparent p-2.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-0 dark:text-slate-100 dark:placeholder-slate-500"
                         />
                     </div>
                 </div>

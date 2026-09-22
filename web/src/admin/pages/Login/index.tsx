@@ -123,15 +123,14 @@ const Login = () => {
                 algorithm: appliedTheme === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm,
             }}
         >
-            {/* 背景：浅色模式柔和灰色，暗黑模式深黑色 */}
-            <div className="flex min-h-screen items-center justify-center bg-slate-50 dark:bg-zinc-950 px-4 transition-colors duration-300">
+            <div className="flex min-h-screen items-center justify-center bg-[#eef1f0] px-4 py-12 transition-colors duration-300 dark:bg-[#111513]">
 
                 {/* 主题切换按钮 - 右上角 */}
                 <button
                     ref={themeButtonRef}
                     type="button"
                     onClick={toggleTheme}
-                    className="fixed top-6 right-6 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-white dark:bg-zinc-900 text-slate-700 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-all z-50 border border-slate-200 dark:border-zinc-700"
+                    className="fixed right-5 top-5 z-50 inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-700 transition-colors hover:bg-slate-50 dark:border-[#303936] dark:bg-[#191e1c] dark:text-slate-300 dark:hover:bg-[#222927]"
                     title={appliedTheme === 'dark' ? "切换到浅色模式" : "切换到暗黑模式"}
                 >
                     {appliedTheme === 'dark' ? (
@@ -141,14 +140,21 @@ const Login = () => {
                     )}
                 </button>
 
-                {/* 卡片：浅色模式纯白，暗黑模式深灰色以提供对比 */}
-                <div className="w-full max-w-[400px] bg-white dark:bg-zinc-900 p-8 sm:p-10 rounded-lg border border-slate-200 dark:border-zinc-800 transition-colors duration-300">
+                <div className="w-full max-w-[420px] rounded-lg border border-slate-200 bg-white p-7 shadow-[0_18px_50px_rgba(16,24,22,0.08)] transition-colors duration-300 dark:border-[#303936] dark:bg-[#191e1c] dark:shadow-[0_18px_50px_rgba(0,0,0,0.2)] sm:p-9">
 
-                    {/* 头部：品牌名称 */}
-                    <div className="mb-10 text-center">
-                        <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-zinc-100">
+                    <div className="mb-8">
+                        <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-md border border-slate-200 bg-slate-50 dark:border-[#35413e] dark:bg-[#222927]">
+                            <img
+                                src="/api/logo?v=3"
+                                alt="Logo"
+                                className="h-9 w-9 rounded object-contain"
+                                onError={(event) => { event.currentTarget.src = '/logo.svg'; }}
+                            />
+                        </div>
+                        <h1 className="text-2xl font-semibold text-slate-900 dark:text-slate-100">
                             {window.SystemConfig.SystemNameZh}
                         </h1>
+                        <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">登录后管理探针、监控与系统设置</p>
                     </div>
 
                     {passwordEnabled && (
@@ -192,7 +198,7 @@ const Login = () => {
                                     loading={loading}
                                     block
                                     size="large"
-                                    className="h-11 font-medium"
+                                    className="h-11 font-semibold"
                                 >
                                     登 录
                                 </Button>
@@ -208,7 +214,7 @@ const Login = () => {
                                     <span className="w-full border-t border-slate-200 dark:border-zinc-800" />
                                 </div>
                                 <div className="relative flex justify-center text-xs uppercase">
-                                    <span className="bg-white dark:bg-zinc-900 px-2 text-slate-400 dark:text-zinc-500">
+                                    <span className="bg-white px-2 text-slate-400 dark:bg-[#191e1c] dark:text-slate-500">
                                         {passwordEnabled ? 'OR' : '使用第三方登录'}
                                     </span>
                                 </div>

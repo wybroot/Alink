@@ -40,8 +40,8 @@ window.SystemConfig = {
 
 	provider := testSystemConfigProvider{
 		config: &models.SystemConfig{
-			SystemNameZh: "PikaW 监控",
-			SystemNameEn: "PikaW Monitor",
+			SystemNameZh: "Alink 监控",
+			SystemNameEn: "Alink Monitor",
 			ICPCode:      "ICP-1",
 			DefaultView:  "grid",
 			CustomJS:     `console.log("pikaw");`,
@@ -59,8 +59,8 @@ window.SystemConfig = {
 	}
 	html := string(rendered)
 	for _, want := range []string{
-		"<title>PikaW 监控 | PikaW Monitor</title>",
-		`SystemNameZh: "PikaW 监控"`,
+		"<title>Alink 监控 | Alink Monitor</title>",
+		`SystemNameZh: "Alink 监控"`,
 		`Version: "v1.2.3"`,
 		`console.log("pikaw");`,
 		`body { color: red; }`,

@@ -13,40 +13,30 @@ interface Props {
 
 const StatBlock = ({title, value, unit, icon: Icon, color, alert, glow}: Props) => {
 
-    const colorMap = {
-        cyan: 'dark:text-violet-400 dark:border-violet-500/30 dark:bg-violet-500/5',
-        emerald: 'dark:text-lime-400 dark:border-lime-500/30 dark:bg-lime-500/5',
-        rose: 'dark:text-rose-400 dark:border-rose-500/30 dark:bg-rose-500/5',
-        purple: 'dark:text-fuchsia-400 dark:border-fuchsia-500/30 dark:bg-fuchsia-500/5'
-    };
-    const style = colorMap[color] || colorMap.cyan;
-
     const iconColor = {
-        cyan: 'text-violet-400',
-        emerald: 'text-lime-400',
-        rose: 'text-rose-400',
-        purple: 'text-fuchsia-400'
+        cyan: 'bg-teal-50 text-teal-700 dark:bg-teal-400/10 dark:text-teal-300',
+        blue: 'bg-blue-50 text-blue-700 dark:bg-blue-400/10 dark:text-blue-300',
+        emerald: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-300',
+        rose: 'bg-rose-50 text-rose-700 dark:bg-rose-400/10 dark:text-rose-300',
+        purple: 'bg-violet-50 text-violet-700 dark:bg-violet-400/10 dark:text-violet-300'
     }
-    let iconStyle = iconColor[color] || colorMap.cyan;
+    const iconStyle = iconColor[color] || iconColor.cyan;
 
     return (
         <div
             className={cn(
-                `command-panel command-panel--scan relative overflow-hidden rounded-lg border p-5`,
-                'bg-white/80 backdrop-blur-md border border-slate-200 shadow-sm',
-                style,
-                alert && 'bg-rose-500/10 command-beacon',
-                glow && 'shadow-[0_0_32px_rgba(16,185,129,0.14)]',
+                'command-panel relative rounded-lg p-4 sm:p-5',
+                alert && 'border-rose-300 dark:border-rose-400/35',
+                glow && 'border-emerald-300 dark:border-emerald-400/30',
             )}>
-            <div className="absolute -right-4 -bottom-4 opacity-10 rotate-[-15deg]"><Icon className="w-24 h-24"/></div>
-            <div className="relative z-10 flex justify-between items-start">
+            <div className="relative z-10 flex items-start justify-between gap-3">
                 <div>
-                    <div className="text-xs font-bold font-mono uppercase tracking-widest opacity-70 mb-2">{title}</div>
-                    <div className="text-4xl font-black tracking-[0.03em] flex items-baseline gap-1">{value}{unit &&
-                        <span className="text-sm font-normal opacity-60 ml-1">{unit}</span>}</div>
+                    <div className="mb-2 text-xs font-medium text-slate-500 dark:text-slate-400">{title}</div>
+                    <div className="flex items-baseline gap-1 text-2xl font-semibold text-slate-900 dark:text-slate-100 sm:text-3xl">{value}{unit &&
+                        <span className="ml-1 text-sm font-normal text-slate-500 dark:text-slate-400">{unit}</span>}</div>
                 </div>
-                <div className={`p-3 border border-current/15 bg-current/5`}>
-                    <Icon className={cn("w-6 h-6", iconStyle)}/>
+                <div className={cn('flex h-10 w-10 items-center justify-center rounded-md', iconStyle)}>
+                    <Icon className="h-5 w-5"/>
                 </div>
             </div>
         </div>

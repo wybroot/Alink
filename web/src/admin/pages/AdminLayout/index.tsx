@@ -194,25 +194,25 @@ const AdminLayout = () => {
             }}
         >
             <AntApp>
-                <div className="command-shell min-h-screen bg-white dark:text-slate-100">
+                <div className="command-shell min-h-screen dark:text-slate-100">
                     {/* 顶部导航栏 */}
                     <header
-                        className="fixed top-0 left-0 right-0 z-[300] h-14 border-b border-slate-200 dark:border-violet-300/15 bg-[#0c071d]/95 shadow-[0_8px_36px_rgba(0,0,0,0.24)] backdrop-blur-xl">
+                        className="fixed inset-x-0 top-0 z-[300] h-14 border-b border-white/10 bg-[#1d2422]/98 backdrop-blur-xl">
                         <div className="flex h-full items-center justify-between px-4">
                             <div className="flex items-center gap-3 text-white">
                                 <div className="flex items-center justify-center">
                                     <img
-                                        src={"/api/logo"}
+                                        src={"/api/logo?v=3"}
                                         alt="Logo"
                                         className="h-10 w-10 object-contain rounded-md"
                                         onError={(e) => {
-                                            e.currentTarget.src = '/logo.png';
+                                            e.currentTarget.src = '/logo.svg';
                                         }}
                                     />
                                 </div>
-                                <div>
-                                    <p className="text-xs uppercase tracking-[0.3em] text-white/60">{window.SystemConfig?.SystemNameZh}</p>
-                                    <p className="text-sm font-semibold">控制台</p>
+                                <div className="min-w-0">
+                                    <p className="max-w-[120px] truncate text-sm font-semibold sm:max-w-[220px]">{window.SystemConfig?.SystemNameZh}</p>
+                                    <p className="text-[11px] text-white/55">管理控制台</p>
                                 </div>
                             </div>
 
@@ -221,7 +221,7 @@ const AdminLayout = () => {
                                     type="text"
                                     icon={<Eye className="h-4 w-4" strokeWidth={2}/>}
                                     onClick={() => window.open('/', '_blank')}
-                                    className="hidden !h-9 !items-center !rounded-md !px-3 !text-xs !text-white/80 hover:!bg-violet-400/10 sm:!inline-flex"
+                                    className="hidden !h-9 !items-center !rounded-md !px-3 !text-xs !text-white/80 hover:!bg-white/10 sm:!inline-flex"
                                 >
                                     公共页面
                                 </Button>
@@ -229,9 +229,9 @@ const AdminLayout = () => {
                                     type="text"
                                     icon={<BookOpen className="h-4 w-4" strokeWidth={2}/>}
                                     onClick={() => navigate('/admin/agents-install/one-click')}
-                                    className="!h-9 !items-center !rounded-md !px-3 !text-xs !text-white hover:!bg-violet-400/10"
+                                    className="!h-9 !items-center !rounded-md !px-2 !text-xs !text-white hover:!bg-white/10 sm:!px-3"
                                 >
-                                    部署指南
+                                    <span className="hidden sm:inline">部署指南</span>
                                 </Button>
 
                                 {/* 主题切换按钮 */}
@@ -239,7 +239,7 @@ const AdminLayout = () => {
                                     ref={themeButtonRef}
                                     type="button"
                                     onClick={toggleTheme}
-                                    className="inline-flex h-9 items-center rounded-md p-2 text-white/80 hover:bg-violet-400/10 transition-all"
+                                    className="inline-flex h-9 items-center rounded-md p-2 text-white/80 transition-colors hover:bg-white/10"
                                     title={appliedTheme === 'dark' ? "切换到浅色模式" : "切换到暗黑模式"}
                                 >
                                     {appliedTheme === 'dark' ? (
@@ -252,14 +252,14 @@ const AdminLayout = () => {
                                 <Dropdown menu={{items: userMenuItems}} placement="bottomRight" trigger={['click']}>
                                     <button
                                         type="button"
-                                        className="flex cursor-pointer items-center gap-2 rounded-md border border-violet-100/15 bg-violet-400/5 px-2.5 py-1 text-left text-white transition-colors hover:border-violet-200/35"
+                                        className="flex cursor-pointer items-center gap-2 rounded-md border border-white/15 bg-white/5 px-2.5 py-1 text-left text-white transition-colors hover:bg-white/10"
                                     >
                                         <Avatar
                                             size={24}
                                             icon={<UserIcon className="h-3.5 w-3.5" strokeWidth={2}/>}
                                             className="!bg-white/20"
                                         />
-                                        <span className="text-xs font-medium">
+                                        <span className="hidden text-xs font-medium sm:inline">
                                         {userInfo?.username || '访客'}
                                     </span>
                                     </button>
@@ -270,7 +270,7 @@ const AdminLayout = () => {
 
                     {/* 侧边栏 */}
                     <aside
-                        className="fixed left-0 z-[200] hidden h-screen overflow-hidden border-r border-slate-200 dark:border-violet-300/15 bg-white/90 dark:bg-[#0c071d]/92 shadow-sm backdrop-blur-xl lg:block"
+                        className="fixed left-0 z-[200] hidden h-screen overflow-hidden border-r border-slate-200 bg-white dark:border-[#303936] dark:bg-[#151a18] lg:block"
                         style={{
                             width: SIDEBAR_WIDTH,
                             paddingTop: HEADER_HEIGHT,
@@ -278,8 +278,8 @@ const AdminLayout = () => {
                     >
                         <div className="flex h-full flex-col">
                             <div className="px-4 py-4">
-                                <p className="text-xs uppercase tracking-[0.3em] text-gray-400 dark:text-slate-500">导航</p>
-                                <p className="mt-1 text-lg font-semibold text-gray-900 dark:text-slate-100">管理面板</p>
+                                <p className="text-xs font-medium text-slate-400 dark:text-slate-500">工作区</p>
+                                <p className="mt-1 text-base font-semibold text-slate-900 dark:text-slate-100">管理面板</p>
                             </div>
                             {/* 菜单区域 */}
                             <ScrollArea className="px-3 pb-6 space-y-1 h-[calc(100vh-228px)]">
@@ -291,24 +291,23 @@ const AdminLayout = () => {
                                             type="button"
                                             onClick={() => handleNavigate(item)}
                                             className={cn(
-                                                'group relative flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm transition-all cursor-pointer',
+                                                'group relative flex w-full cursor-pointer items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors',
                                                 isActive
-                                                    ? 'bg-gradient-to-r from-violet-400/20 to-indigo-500/5 text-indigo-600 dark:text-violet-200 shadow-[inset_3px_0_0_#8b5cf6]'
-                                                    : 'text-gray-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-violet-400/8'
+                                                    ? 'bg-teal-50 text-teal-800 dark:bg-teal-400/10 dark:text-teal-200'
+                                                    : 'text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-white/5'
                                             )}
                                         >
                                             <span
                                                 className={cn(
-                                                    'flex h-8 w-8 items-center justify-center rounded-md bg-white dark:bg-slate-800 text-gray-500 dark:text-slate-400 shadow-sm',
-                                                    isActive && 'bg-indigo-600 dark:bg-violet-500 text-slate-950 command-beacon'
+                                                    'flex h-8 w-8 items-center justify-center rounded-md bg-slate-100 text-slate-500 dark:bg-[#222927] dark:text-slate-400',
+                                                    isActive && 'bg-teal-700 text-white dark:bg-teal-400 dark:text-[#10201d]'
                                                 )}
                                             >
                                                 {item.icon}
                                             </span>
                                             <span className="truncate font-medium">{item.label}</span>
                                             {isActive &&
-                                                <span
-                                                    className="ml-auto text-[10px] uppercase text-indigo-500 dark:text-indigo-400">当前</span>}
+                                                    <span className="ml-auto text-[10px] text-teal-700 dark:text-teal-300">当前</span>}
                                         </button>
                                     );
                                 })}
@@ -317,13 +316,13 @@ const AdminLayout = () => {
                             {/* 版本信息 */}
                             {version && (
                                 <div className="border-t border-gray-100 dark:border-slate-800 px-4 py-4">
-                                    <div className="rounded-2xl bg-gray-50/90 dark:bg-slate-800/90 p-3 shadow-inner">
-                                        <p className="text-[11px] uppercase tracking-[0.25em] text-gray-400 dark:text-slate-500">版本信息</p>
+                                    <div className="rounded-md border border-slate-200 bg-slate-50 p-3 dark:border-[#303936] dark:bg-[#191e1c]">
+                                        <p className="text-[11px] text-slate-400 dark:text-slate-500">版本信息</p>
                                         <div className="mt-2 flex items-end justify-between">
                                             <div>
                                                 <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">Server: {version.version}</p>
                                                 <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">Agent: {version.agentVersion}</p>
-                                                <p className="text-[11px] text-gray-500 dark:text-slate-400 uppercase tracking-[0.1em]">
+                                                <p className="text-[11px] text-slate-500 dark:text-slate-400">
                                                     {window.SystemConfig?.SystemNameEn}
                                                 </p>
                                             </div>
@@ -335,11 +334,11 @@ const AdminLayout = () => {
                     </aside>
 
                     {/* 主内容区 */}
-                    <div className="flex flex-col bg-white/80 dark:bg-transparent"
+                    <div className="flex flex-col"
                          style={{paddingTop: HEADER_HEIGHT, minHeight: `calc(100vh - ${HEADER_HEIGHT}px)`}}>
                         {/* 内容区域 */}
-                        <main className="flex-grow bg-white/80 dark:bg-transparent pb-20 pt-5 lg:ml-[240px] lg:pb-10">
-                            <div className="w-full px-4 pb-4 lg:px-8">
+                        <main className="flex-grow pb-20 pt-5 lg:ml-[240px] lg:pb-10">
+                            <div className="mx-auto w-full max-w-[1600px] px-4 pb-4 lg:px-8">
                                 <Outlet/>
                             </div>
                         </main>
@@ -347,8 +346,8 @@ const AdminLayout = () => {
 
                     {/* 移动端底部导航栏 */}
                     <nav
-                        className="fixed bottom-0 left-0 right-0 z-[300] border-t border-gray-200 dark:border-violet-300/15 bg-white/95 dark:bg-[#0c071d]/95 backdrop-blur-xl lg:hidden">
-                        <div className="grid h-16 grid-cols-5">
+                        className="fixed inset-x-0 bottom-0 z-[300] border-t border-slate-200 bg-white/95 backdrop-blur-xl dark:border-[#303936] dark:bg-[#151a18]/95 lg:hidden">
+                        <div className="grid h-16 grid-cols-7">
                             {menuItems.map((item) => {
                                 const isActive = location.pathname.startsWith(item.path);
                                 return (
@@ -357,15 +356,15 @@ const AdminLayout = () => {
                                         type="button"
                                         onClick={() => handleNavigate(item)}
                                         className={cn(
-                                            'flex flex-col items-center justify-center gap-1 text-xs font-medium',
-                                            isActive ? 'text-indigo-600 dark:text-indigo-400' : 'text-gray-500 dark:text-slate-400'
+                                            'flex min-w-0 flex-col items-center justify-center gap-1 overflow-hidden text-[10px] font-medium',
+                                            isActive ? 'text-teal-700 dark:text-teal-300' : 'text-slate-500 dark:text-slate-400'
                                         )}
                                     >
                                     <span
-                                        className={cn('rounded-full p-2', isActive ? 'bg-indigo-50 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400' : 'text-current')}>
+                                        className={cn('rounded-md p-1.5', isActive ? 'bg-teal-50 text-teal-700 dark:bg-teal-400/10 dark:text-teal-300' : 'text-current')}>
                                         {item.icon}
                                     </span>
-                                        <span>{item.label}</span>
+                                        <span className="w-full truncate px-0.5 text-center">{item.label}</span>
                                     </button>
                                 );
                             })}
