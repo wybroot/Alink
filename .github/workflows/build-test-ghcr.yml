@@ -8,7 +8,7 @@ on:
 env:
   # 使用 GitHub Container Registry
   GHCR_REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}  # 会自动变成 ghcr.io/用户名/仓库名
+  IMAGE_NAME: wybroot/alink
 
 jobs:
   build-and-push:
