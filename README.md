@@ -26,12 +26,12 @@ Alink 是一个轻量级的探针监控系统，支持实时数据采集、存�
 
 ## 截图
 
-![设备监控](screenshots/public1.png)
-![服务监控](screenshots/public4.png)
-![Docker 状态](screenshots/dockerstats.png)
-![安全审计](screenshots/audit.png)
-![应急响应](screenshots/sec01.png)
-![系统设置](screenshots/setting.png)
+![公开设备总览](screenshots/public-overview.png)
+![设备详情](screenshots/server-detail.png)
+![公开服务监控](screenshots/monitor-public.png)
+![探针管理](screenshots/agent-admin.png)
+![服务监控管理](screenshots/monitor-admin.png)
+![系统设置](screenshots/settings.png)
 
 ## 快速开始
 

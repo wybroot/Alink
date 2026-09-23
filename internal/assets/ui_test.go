@@ -44,7 +44,7 @@ window.SystemConfig = {
 			SystemNameEn: "Alink Monitor",
 			ICPCode:      "ICP-1",
 			DefaultView:  "grid",
-			CustomJS:     `console.log("pikaw");`,
+			CustomJS:     `console.log("alink");`,
 			CustomCSS:    `body { color: red; }`,
 			Version:      "v1.2.3",
 		},
@@ -62,7 +62,7 @@ window.SystemConfig = {
 		"<title>Alink 监控 | Alink Monitor</title>",
 		`SystemNameZh: "Alink 监控"`,
 		`Version: "v1.2.3"`,
-		`console.log("pikaw");`,
+		`console.log("alink");`,
 		`body { color: red; }`,
 	} {
 		if !strings.Contains(html, want) {

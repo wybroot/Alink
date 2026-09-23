@@ -12,7 +12,7 @@ const devSystemConfig = {
 };
 
 const devSystemConfigPlugin = () => ({
-    name: 'pikaw-dev-system-config',
+    name: 'alink-dev-system-config',
     apply: 'serve' as const,
     transformIndexHtml(html: string) {
         return html
