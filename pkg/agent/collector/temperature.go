@@ -6,8 +6,8 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/wybroot/pikaw/internal/protocol"
 	"github.com/shirou/gopsutil/v4/sensors"
+	"github.com/wybroot/alink/internal/protocol"
 )
 
 // TemperatureCollector 温度监控采集器

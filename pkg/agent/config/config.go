@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/wybroot/pikaw/pkg/agent/utils"
+	"github.com/wybroot/alink/pkg/agent/utils"
 	"gopkg.in/yaml.v3"
 )
 
@@ -124,7 +124,7 @@ func DefaultConfig() *Config {
 // GetDefaultConfigPath 获取默认配置文件路径
 func GetDefaultConfigPath() string {
 	var homeDir = utils.GetSafeHomeDir()
-	return filepath.Join(homeDir, ".pikaw", "agent.yaml")
+	return filepath.Join(homeDir, ".alink", "agent.yaml")
 }
 
 // Load 加载配置文件

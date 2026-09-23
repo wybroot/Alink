@@ -13,8 +13,8 @@ BUILD_TIME=$(shell date +%Y-%m-%d_%H:%M:%S)
 UPX_FLAGS ?=
 
 # Go 构建参数
-LDFLAGS=-s -w -X 'github.com/wybroot/pikaw/pkg/version.Version=$(VERSION)' -X 'github.com/wybroot/pikaw/pkg/version.AgentVersion=$(AGENT_VERSION)'
-AGENT_LDFLAGS=-s -w -X 'github.com/wybroot/pikaw/pkg/version.Version=$(VERSION)' -X 'github.com/wybroot/pikaw/pkg/version.AgentVersion=$(AGENT_VERSION)'
+LDFLAGS=-s -w -X 'github.com/wybroot/alink/pkg/version.Version=$(VERSION)' -X 'github.com/wybroot/alink/pkg/version.AgentVersion=$(AGENT_VERSION)'
+AGENT_LDFLAGS=-s -w -X 'github.com/wybroot/alink/pkg/version.Version=$(VERSION)' -X 'github.com/wybroot/alink/pkg/version.AgentVersion=$(AGENT_VERSION)'
 GOFLAGS=CGO_ENABLED=0
 
 # 构建前端
@@ -23,15 +23,15 @@ build-web:
 
 # 构建服务端（开发）
 build-server:
-	$(GOFLAGS) GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="$(LDFLAGS)" -o bin/pikaw-linux-amd64 cmd/serv/main.go
-	upx $(UPX_FLAGS) bin/pikaw-linux-amd64
+	$(GOFLAGS) GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="$(LDFLAGS)" -o bin/alink-linux-amd64 cmd/serv/main.go
+	upx $(UPX_FLAGS) bin/alink-linux-amd64
 
 build-servers:
-	$(GOFLAGS) GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="$(LDFLAGS)" -o bin/pikaw-linux-amd64 cmd/serv/main.go
-	$(GOFLAGS) GOOS=linux GOARCH=arm64 go build -trimpath -ldflags="$(LDFLAGS)" -o bin/pikaw-linux-arm64 cmd/serv/main.go
+	$(GOFLAGS) GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="$(LDFLAGS)" -o bin/alink-linux-amd64 cmd/serv/main.go
+	$(GOFLAGS) GOOS=linux GOARCH=arm64 go build -trimpath -ldflags="$(LDFLAGS)" -o bin/alink-linux-arm64 cmd/serv/main.go
 
-	upx $(UPX_FLAGS) bin/pikaw-linux-amd64
-	upx $(UPX_FLAGS) bin/pikaw-linux-arm64
+	upx $(UPX_FLAGS) bin/alink-linux-amd64
+	upx $(UPX_FLAGS) bin/alink-linux-arm64
 
 # 构建所有平台的 Agent
 build-agents:
@@ -41,24 +41,24 @@ build-agents:
 	@mkdir -p bin/agents
 
 	# Linux
-	$(GOFLAGS) GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="$(AGENT_LDFLAGS)" -o bin/agents/pikaw-agent-linux-amd64 ./cmd/agent
-	$(GOFLAGS) GOOS=linux GOARCH=arm64 go build -trimpath -ldflags="$(AGENT_LDFLAGS)" -o bin/agents/pikaw-agent-linux-arm64 ./cmd/agent
-	$(GOFLAGS) GOOS=linux GOARCH=arm GOARM=7 go build -trimpath -ldflags="$(AGENT_LDFLAGS)" -o bin/agents/pikaw-agent-linux-armv7 ./cmd/agent
-	$(GOFLAGS) GOOS=linux GOARCH=loong64 go build -trimpath -ldflags="$(AGENT_LDFLAGS)" -o bin/agents/pikaw-agent-linux-loong64 ./cmd/agent
+	$(GOFLAGS) GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="$(AGENT_LDFLAGS)" -o bin/agents/alink-agent-linux-amd64 ./cmd/agent
+	$(GOFLAGS) GOOS=linux GOARCH=arm64 go build -trimpath -ldflags="$(AGENT_LDFLAGS)" -o bin/agents/alink-agent-linux-arm64 ./cmd/agent
+	$(GOFLAGS) GOOS=linux GOARCH=arm GOARM=7 go build -trimpath -ldflags="$(AGENT_LDFLAGS)" -o bin/agents/alink-agent-linux-armv7 ./cmd/agent
+	$(GOFLAGS) GOOS=linux GOARCH=loong64 go build -trimpath -ldflags="$(AGENT_LDFLAGS)" -o bin/agents/alink-agent-linux-loong64 ./cmd/agent
 
 	# macOS
-	$(GOFLAGS) GOOS=darwin GOARCH=amd64 go build -trimpath -ldflags="$(AGENT_LDFLAGS)" -o bin/agents/pikaw-agent-darwin-amd64 ./cmd/agent
-	$(GOFLAGS) GOOS=darwin GOARCH=arm64 go build -trimpath -ldflags="$(AGENT_LDFLAGS)" -o bin/agents/pikaw-agent-darwin-arm64 ./cmd/agent
+	$(GOFLAGS) GOOS=darwin GOARCH=amd64 go build -trimpath -ldflags="$(AGENT_LDFLAGS)" -o bin/agents/alink-agent-darwin-amd64 ./cmd/agent
+	$(GOFLAGS) GOOS=darwin GOARCH=arm64 go build -trimpath -ldflags="$(AGENT_LDFLAGS)" -o bin/agents/alink-agent-darwin-arm64 ./cmd/agent
 
 	# Windows
-	$(GOFLAGS) GOOS=windows GOARCH=amd64 go build -trimpath -ldflags="$(AGENT_LDFLAGS)" -o bin/agents/pikaw-agent-windows-amd64.exe ./cmd/agent
-	$(GOFLAGS) GOOS=windows GOARCH=arm64 go build -trimpath -ldflags="$(AGENT_LDFLAGS)" -o bin/agents/pikaw-agent-windows-arm64.exe ./cmd/agent
+	$(GOFLAGS) GOOS=windows GOARCH=amd64 go build -trimpath -ldflags="$(AGENT_LDFLAGS)" -o bin/agents/alink-agent-windows-amd64.exe ./cmd/agent
+	$(GOFLAGS) GOOS=windows GOARCH=arm64 go build -trimpath -ldflags="$(AGENT_LDFLAGS)" -o bin/agents/alink-agent-windows-arm64.exe ./cmd/agent
 
 	@echo "All agents built successfully!"
 	@echo "Compressing agents with UPX..."
-	@upx $(UPX_FLAGS) bin/agents/pikaw-agent-linux-amd64
-	@upx $(UPX_FLAGS) bin/agents/pikaw-agent-linux-arm64
-	@upx $(UPX_FLAGS) bin/agents/pikaw-agent-linux-armv7
+	@upx $(UPX_FLAGS) bin/agents/alink-agent-linux-amd64
+	@upx $(UPX_FLAGS) bin/agents/alink-agent-linux-arm64
+	@upx $(UPX_FLAGS) bin/agents/alink-agent-linux-armv7
 	@echo "All agents compressed successfully!"
 	@ls -lh bin/agents/
 

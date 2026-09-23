@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/wybroot/pikaw/internal/models"
-	"github.com/wybroot/pikaw/internal/protocol"
-	"github.com/wybroot/pikaw/internal/websocket"
+	"github.com/wybroot/alink/internal/models"
+	"github.com/wybroot/alink/internal/protocol"
+	"github.com/wybroot/alink/internal/websocket"
 	"go.uber.org/zap"
 )
 

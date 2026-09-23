@@ -7,7 +7,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/wybroot/pikaw/internal/models"
+	"github.com/wybroot/alink/internal/models"
 )
 
 type SystemConfigProvider interface {
@@ -67,8 +67,8 @@ func renderIndexHTML(dir string, systemConfig *models.SystemConfig) error {
 		return err
 	}
 
-	html := strings.ReplaceAll(rendered.String(), "/*__PIKAW_CUSTOM_JS__*/", systemConfig.CustomJS)
-	html = strings.ReplaceAll(html, "/*__PIKAW_CUSTOM_CSS__*/", systemConfig.CustomCSS)
+	html := strings.ReplaceAll(rendered.String(), "/*__ALINK_CUSTOM_JS__*/", systemConfig.CustomJS)
+	html = strings.ReplaceAll(html, "/*__ALINK_CUSTOM_CSS__*/", systemConfig.CustomCSS)
 
 	out, err := os.Create(outPath)
 	if err != nil {

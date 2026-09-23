@@ -3,11 +3,11 @@ package handler
 import (
 	"time"
 
-	"github.com/wybroot/pikaw/internal/models"
-	"github.com/wybroot/pikaw/internal/service"
 	"github.com/go-orz/orz"
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
+	"github.com/wybroot/alink/internal/models"
+	"github.com/wybroot/alink/internal/service"
 	"go.uber.org/zap"
 )
 

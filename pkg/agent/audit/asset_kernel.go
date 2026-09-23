@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/wybroot/pikaw/internal/protocol"
+	"github.com/wybroot/alink/internal/protocol"
 )
 
 // KernelAssetsCollector 内核资产收集器

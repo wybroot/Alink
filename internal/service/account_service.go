@@ -4,9 +4,9 @@ import (
 	"context"
 	"time"
 
-	"github.com/wybroot/pikaw/internal/config"
 	"github.com/go-errors/errors"
 	"github.com/golang-jwt/jwt/v5"
+	"github.com/wybroot/alink/internal/config"
 	"go.uber.org/zap"
 )
 

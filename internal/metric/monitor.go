@@ -1,8 +1,8 @@
 package metric
 
 import (
-	"github.com/wybroot/pikaw/internal/protocol"
 	"github.com/go-orz/toolkit/syncx"
+	"github.com/wybroot/alink/internal/protocol"
 )
 
 // LatestMonitorMetrics 监控任务的最新指标（按 agent 分组）

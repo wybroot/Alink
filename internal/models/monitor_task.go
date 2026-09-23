@@ -1,7 +1,7 @@
 package models
 
 import (
-	"github.com/wybroot/pikaw/internal/protocol"
+	"github.com/wybroot/alink/internal/protocol"
 	"gorm.io/datatypes"
 )
 

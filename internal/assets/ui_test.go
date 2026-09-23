@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/wybroot/pikaw/internal/models"
+	"github.com/wybroot/alink/internal/models"
 )
 
 type testSystemConfigProvider struct {
@@ -32,8 +32,8 @@ window.SystemConfig = {
     Version: "[[.Version]]",
 };
 </script>
-<script>/*__PIKAW_CUSTOM_JS__*/</script>
-<style>/*__PIKAW_CUSTOM_CSS__*/</style>`
+<script>/*__ALINK_CUSTOM_JS__*/</script>
+<style>/*__ALINK_CUSTOM_CSS__*/</style>`
 	if err := os.WriteFile(indexPath, []byte(src), 0644); err != nil {
 		t.Fatal(err)
 	}

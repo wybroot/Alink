@@ -3,7 +3,7 @@ package metric
 import (
 	"sync"
 
-	"github.com/wybroot/pikaw/internal/protocol"
+	"github.com/wybroot/alink/internal/protocol"
 )
 
 // DiskSummary 磁盘汇总数据

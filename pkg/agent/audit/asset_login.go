@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/wybroot/pikaw/internal/protocol"
+	"github.com/wybroot/alink/internal/protocol"
 )
 
 // LoginAssetsCollector 登录日志收集器

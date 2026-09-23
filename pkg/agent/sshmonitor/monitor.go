@@ -12,12 +12,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/wybroot/pikaw/internal/protocol"
+	"github.com/wybroot/alink/internal/protocol"
 )
 
 const (
-	DefaultSocketDir  = "/run/pikaw"
-	DefaultSocketPath = "/run/pikaw/ssh_login.sock"
+	DefaultSocketDir  = "/run/alink"
+	DefaultSocketPath = "/run/alink/ssh_login.sock"
 )
 
 // Monitor SSH登录监控器

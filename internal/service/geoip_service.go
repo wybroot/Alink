@@ -5,8 +5,8 @@ import (
 	"net"
 	"sync"
 
-	"github.com/wybroot/pikaw/internal/config"
 	"github.com/oschwald/geoip2-golang"
+	"github.com/wybroot/alink/internal/config"
 	"go.uber.org/zap"
 )
 

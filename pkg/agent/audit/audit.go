@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/wybroot/pikaw/internal/protocol"
+	"github.com/wybroot/alink/internal/protocol"
 )
 
 // 状态常量

@@ -11,12 +11,12 @@ import (
 	"syscall"
 
 	"github.com/kardianos/service"
-	"github.com/wybroot/pikaw/pkg/agent"
-	"github.com/wybroot/pikaw/pkg/agent/config"
-	"github.com/wybroot/pikaw/pkg/agent/id"
-	"github.com/wybroot/pikaw/pkg/agent/sshmonitor"
-	"github.com/wybroot/pikaw/pkg/agent/sysutil"
-	"github.com/wybroot/pikaw/pkg/agent/updater"
+	"github.com/wybroot/alink/pkg/agent"
+	"github.com/wybroot/alink/pkg/agent/config"
+	"github.com/wybroot/alink/pkg/agent/id"
+	"github.com/wybroot/alink/pkg/agent/sshmonitor"
+	"github.com/wybroot/alink/pkg/agent/sysutil"
+	"github.com/wybroot/alink/pkg/agent/updater"
 )
 
 // program 实现 service.Interface
@@ -177,7 +177,7 @@ func NewServiceManager(cfg *config.Config) (*ServiceManager, error) {
 
 	// 配置服务
 	svcConfig := &service.Config{
-		Name:        "pikaw-agent",
+		Name:        "alink-agent",
 		DisplayName: "Alink Agent",
 		Description: "Alink 监控探针 - 采集系统性能指标并上报到服务端",
 		Arguments:   []string{"run", "--config", cfg.Path},

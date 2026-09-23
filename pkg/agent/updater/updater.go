@@ -10,8 +10,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/wybroot/pikaw/pkg/agent/config"
 	"github.com/minio/selfupdate"
+	"github.com/wybroot/alink/pkg/agent/config"
 )
 
 // VersionInfo 版本信息

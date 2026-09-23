@@ -4,9 +4,9 @@ import (
 	"net"
 	"time"
 
-	"github.com/wybroot/pikaw/internal/protocol"
-	"github.com/wybroot/pikaw/pkg/agent/config"
 	gopsutilNet "github.com/shirou/gopsutil/v4/net"
+	"github.com/wybroot/alink/internal/protocol"
+	"github.com/wybroot/alink/pkg/agent/config"
 )
 
 // NetworkCollector 网络监控采集器

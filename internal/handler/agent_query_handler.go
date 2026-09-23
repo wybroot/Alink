@@ -1,10 +1,10 @@
 package handler
 
 import (
-	"github.com/wybroot/pikaw/internal/models"
-	"github.com/wybroot/pikaw/internal/utils"
 	"github.com/go-orz/orz"
 	"github.com/labstack/echo/v4"
+	"github.com/wybroot/alink/internal/models"
+	"github.com/wybroot/alink/internal/utils"
 	"gorm.io/datatypes"
 )
 

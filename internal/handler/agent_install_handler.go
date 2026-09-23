@@ -8,8 +8,8 @@ import (
 
 	"github.com/go-orz/orz"
 	"github.com/labstack/echo/v4"
-	"github.com/wybroot/pikaw/internal/assets"
-	"github.com/wybroot/pikaw/pkg/version"
+	"github.com/wybroot/alink/internal/assets"
+	"github.com/wybroot/alink/pkg/version"
 	"go.uber.org/zap"
 )
 
@@ -47,7 +47,7 @@ func (h *AgentHandler) DownloadAgent(c echo.Context) error {
 		h.logger.Info("download agent allowed by ip whitelist", zap.String("ip", clientIP), zap.String("filename", filename))
 	}
 
-	agentFilename := fmt.Sprintf("pikaw-%s", filename)
+	agentFilename := fmt.Sprintf("alink-%s", filename)
 	agentFile, err := os.Open(assets.AgentPath(agentFilename))
 	if err != nil {
 		h.logger.Error("agent binary not found", zap.String("filename", filename), zap.Error(err))
@@ -169,11 +169,11 @@ detect_platform() {
     case "$OS" in
         linux)
             PLATFORM="linux-$ARCH"
-            AGENT_NAME="pikaw-agent"
+            AGENT_NAME="alink-agent"
             ;;
         darwin)
             PLATFORM="darwin-$ARCH"
-            AGENT_NAME="pikaw-agent"
+            AGENT_NAME="alink-agent"
             ;;
         *)
             echo_error "不支持的操作系统: $OS"
@@ -187,7 +187,7 @@ detect_platform() {
 # 下载探针
 download_agent() {
     local download_url="` + serverUrl + `/api/agent/downloads/agent-$PLATFORM?key=` + token + `"
-    local temp_file="/tmp/pikaw-agent-download"
+    local temp_file="/tmp/alink-agent-download"
 
     echo_info "正在下载探针..."
 
@@ -241,11 +241,11 @@ main() {
     echo_info "=========================================="
     echo ""
     echo_info "常用命令："
-    echo "  查看状态: pikaw-agent status"
-    echo "  启动服务: pikaw-agent start"
-    echo "  停止服务: pikaw-agent stop"
-    echo "  重启服务: pikaw-agent restart"
-    echo "  卸载服务: pikaw-agent uninstall"
+    echo "  查看状态: alink-agent status"
+    echo "  启动服务: alink-agent start"
+    echo "  停止服务: alink-agent stop"
+    echo "  重启服务: alink-agent restart"
+    echo "  卸载服务: alink-agent uninstall"
     echo ""
 }
 

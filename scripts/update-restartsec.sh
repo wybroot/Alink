@@ -2,7 +2,7 @@
 
 # Alink Agent RestartSec 升级脚本
 # 用途: 将 systemd 服务的 RestartSec 从 120 改为 5
-# 使用: curl -fsSL https://raw.githubusercontent.com/wybroot/pikaw/master/scripts/update-restartsec.sh | sudo bash
+# 使用: curl -fsSL https://raw.githubusercontent.com/wybroot/alink/master/scripts/update-restartsec.sh | sudo bash
 
 set -e
 
@@ -12,7 +12,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-SERVICE_NAME="pikaw-agent"
+SERVICE_NAME="alink-agent"
 SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
 
 echo "================================================"
@@ -23,14 +23,14 @@ echo ""
 # 检查是否以 root 权限运行
 if [ "$EUID" -ne 0 ]; then
     echo -e "${RED}错误: 请使用 root 权限运行此脚本${NC}"
-    echo "使用方法: curl -fsSL https://raw.githubusercontent.com/wybroot/pikaw/master/scripts/update-restartsec.sh | sudo bash"
+    echo "使用方法: curl -fsSL https://raw.githubusercontent.com/wybroot/alink/master/scripts/update-restartsec.sh | sudo bash"
     exit 1
 fi
 
 # 检查服务文件是否存在
 if [ ! -f "$SERVICE_FILE" ]; then
     echo -e "${RED}错误: 服务文件不存在: $SERVICE_FILE${NC}"
-    echo "请先安装 pikaw-agent 服务"
+    echo "请先安装 alink-agent 服务"
     exit 1
 fi
 

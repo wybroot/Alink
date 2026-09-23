@@ -5,7 +5,7 @@ package audit
 import (
 	"os"
 
-	"github.com/wybroot/pikaw/internal/protocol"
+	"github.com/wybroot/alink/internal/protocol"
 )
 
 // fillFileOwnership 填充文件所有者和组信息 (Windows系统)

@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/wybroot/pikaw/internal/protocol"
+	"github.com/wybroot/alink/internal/protocol"
 )
 
 // 默认 IPv4 API 列表

@@ -7,9 +7,9 @@ import (
 
 	"github.com/go-orz/orz"
 	"github.com/labstack/echo/v4"
-	"github.com/wybroot/pikaw/internal/assets"
-	"github.com/wybroot/pikaw/internal/models"
-	"github.com/wybroot/pikaw/internal/service"
+	"github.com/wybroot/alink/internal/assets"
+	"github.com/wybroot/alink/internal/models"
+	"github.com/wybroot/alink/internal/service"
 	"go.uber.org/zap"
 )
 

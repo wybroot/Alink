@@ -1,9 +1,9 @@
 package collector
 
 import (
-	"github.com/wybroot/pikaw/internal/protocol"
 	"github.com/shirou/gopsutil/v4/host"
 	"github.com/shirou/gopsutil/v4/load"
+	"github.com/wybroot/alink/internal/protocol"
 )
 
 // HostCollector 主机信息采集器

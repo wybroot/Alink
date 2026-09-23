@@ -19,8 +19,8 @@ import (
 
 	"github.com/go-orz/cache"
 	"github.com/valyala/fasttemplate"
-	"github.com/wybroot/pikaw/internal/models"
-	"github.com/wybroot/pikaw/internal/utils"
+	"github.com/wybroot/alink/internal/models"
+	"github.com/wybroot/alink/internal/utils"
 	"go.uber.org/zap"
 	"gopkg.in/gomail.v2"
 )

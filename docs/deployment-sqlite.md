@@ -11,13 +11,13 @@
 
 ```bash
 # 下载 docker-compose.yml 配置文件
-curl -O https://raw.githubusercontent.com/wybroot/pikaw/master/docker-compose.sqlite.yml
+curl -O https://raw.githubusercontent.com/wybroot/alink/master/docker-compose.sqlite.yml
 # 下载配置文件示例
-curl -o config.yaml https://raw.githubusercontent.com/wybroot/pikaw/master/config.sqlite.yaml
+curl -o config.yaml https://raw.githubusercontent.com/wybroot/alink/master/config.sqlite.yaml
 
 # 或使用 wget
-wget https://raw.githubusercontent.com/wybroot/pikaw/master/docker-compose.sqlite.yml
-wget -O config.yaml https://raw.githubusercontent.com/wybroot/pikaw/master/config.sqlite.yaml
+wget https://raw.githubusercontent.com/wybroot/alink/master/docker-compose.sqlite.yml
+wget -O config.yaml https://raw.githubusercontent.com/wybroot/alink/master/config.sqlite.yaml
 ```
 
 ### 2. 修改配置
@@ -29,7 +29,7 @@ database:
   enabled: true
   type: sqlite
   sqlite:
-    path: "./data/pikaw.db"
+    path: "./data/alink.db"
 ```
 
 其他配置项请参考 [通用配置说明](common-config.md)。
@@ -44,7 +44,7 @@ docker-compose -f docker-compose.sqlite.yml up -d
 docker-compose -f docker-compose.sqlite.yml ps
 
 # 查看日志
-docker-compose -f docker-compose.sqlite.yml logs -f pikaw
+docker-compose -f docker-compose.sqlite.yml logs -f alink
 ```
 
 ### 4. 访问服务
@@ -71,17 +71,17 @@ docker-compose -f docker-compose.sqlite.yml down -v
 ## 数据持久化
 
 系统数据分别存储在以下目录：
-- **SQLite 数据库**：`./data/pikaw.db` - 存储配置和审计数据
+- **SQLite 数据库**：`./data/alink.db` - 存储配置和审计数据
 - **VictoriaMetrics 数据**：`./data/vmdata` - 存储时序指标数据（默认保留 7 天）
 
 ### 备份 SQLite 数据库
 
 ```bash
 # 备份数据库
-cp ./data/pikaw.db ./data/pikaw.db.backup-$(date +%Y%m%d)
+cp ./data/alink.db ./data/alink.db.backup-$(date +%Y%m%d)
 
 # 或使用 SQLite 的备份命令
-sqlite3 ./data/pikaw.db ".backup './data/pikaw.db.backup-$(date +%Y%m%d)'"
+sqlite3 ./data/alink.db ".backup './data/alink.db.backup-$(date +%Y%m%d)'"
 ```
 
 ### 备份 VictoriaMetrics 数据
@@ -98,11 +98,11 @@ tar -czf vmdata-backup-$(date +%Y%m%d).tar.gz ./data/vmdata
 ### 数据库文件权限问题
 
 - 确认 `./data` 目录存在且有写入权限
-- 检查 SQLite 数据库文件权限：`ls -l ./data/pikaw.db`
+- 检查 SQLite 数据库文件权限：`ls -l ./data/alink.db`
 - 如果遇到权限问题，可以尝试：
   ```bash
   chmod 755 ./data
-  chmod 644 ./data/pikaw.db
+  chmod 644 ./data/alink.db
   ```
 
 其他故障排查请参考 [通用配置说明](common-config.md)。

@@ -3,9 +3,9 @@ package collector
 import (
 	"strings"
 
-	"github.com/wybroot/pikaw/internal/protocol"
-	"github.com/wybroot/pikaw/pkg/agent/config"
 	"github.com/shirou/gopsutil/v4/disk"
+	"github.com/wybroot/alink/internal/protocol"
+	"github.com/wybroot/alink/pkg/agent/config"
 )
 
 // 不以 /dev/ 开头但仍是真实存储的文件系统类型

@@ -7,11 +7,11 @@
 package internal
 
 import (
-	"github.com/wybroot/pikaw/internal/config"
-	"github.com/wybroot/pikaw/internal/handler"
-	"github.com/wybroot/pikaw/internal/service"
-	"github.com/wybroot/pikaw/internal/vmclient"
-	"github.com/wybroot/pikaw/internal/websocket"
+	"github.com/wybroot/alink/internal/config"
+	"github.com/wybroot/alink/internal/handler"
+	"github.com/wybroot/alink/internal/service"
+	"github.com/wybroot/alink/internal/vmclient"
+	"github.com/wybroot/alink/internal/websocket"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 	"time"

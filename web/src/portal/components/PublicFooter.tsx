@@ -14,7 +14,7 @@ const PublicFooter = () => {
                             <span className="text-slate-300 dark:text-slate-700">|</span>
                             {/* GitHub 链接 */}
                             <a
-                                href="https://github.com/wybroot/pikaw"
+                                href="https://github.com/wybroot/alink"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="group flex items-center gap-1.5 text-slate-600 transition-colors hover:text-teal-700 dark:text-slate-300 dark:hover:text-teal-300"

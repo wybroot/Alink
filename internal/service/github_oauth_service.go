@@ -12,7 +12,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/wybroot/pikaw/internal/config"
+	"github.com/wybroot/alink/internal/config"
 	"go.uber.org/zap"
 )
 

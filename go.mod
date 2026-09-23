@@ -1,4 +1,4 @@
-module github.com/wybroot/pikaw
+module github.com/wybroot/alink
 
 go 1.26
 

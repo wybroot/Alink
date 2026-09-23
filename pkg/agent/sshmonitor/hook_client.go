@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/wybroot/pikaw/internal/protocol"
+	"github.com/wybroot/alink/internal/protocol"
 )
 
 // SendEventFromEnv 从 PAM 环境变量构建并发送事件

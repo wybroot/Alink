@@ -8,9 +8,9 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/wybroot/pikaw/internal/protocol"
 	gopsutilNet "github.com/shirou/gopsutil/v4/net"
 	"github.com/shirou/gopsutil/v4/process"
+	"github.com/wybroot/alink/internal/protocol"
 )
 
 // NetworkAssetsCollector 网络资产收集器

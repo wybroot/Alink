@@ -1,9 +1,9 @@
 package handler
 
 import (
-	"github.com/wybroot/pikaw/internal/service"
-	ws "github.com/wybroot/pikaw/internal/websocket"
 	"github.com/gorilla/websocket"
+	"github.com/wybroot/alink/internal/service"
+	ws "github.com/wybroot/alink/internal/websocket"
 	"go.uber.org/zap"
 )
 

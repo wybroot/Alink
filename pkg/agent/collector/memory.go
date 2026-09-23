@@ -1,8 +1,8 @@
 package collector
 
 import (
-	"github.com/wybroot/pikaw/internal/protocol"
 	"github.com/shirou/gopsutil/v4/mem"
+	"github.com/wybroot/alink/internal/protocol"
 )
 
 // MemoryCollector 内存监控采集器

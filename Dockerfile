@@ -14,7 +14,7 @@ WORKDIR /app
 ARG TARGETARCH
 
 # 从外部编译的产物复制文件
-COPY ./bin/pikaw-linux-${TARGETARCH} ./pikaw
+COPY ./bin/alink-linux-${TARGETARCH} ./alink
 COPY ./bin/agents ./bin/agents
 COPY ./web/dist ./web/dist
 COPY ./web/public/logo.svg ./web/public/logo.svg
@@ -23,4 +23,4 @@ COPY ./web/public/logo.svg ./web/public/logo.svg
 EXPOSE 8080
 
 # 启动服务
-ENTRYPOINT ["./pikaw", "serve"]
+ENTRYPOINT ["./alink", "serve"]

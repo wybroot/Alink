@@ -8,10 +8,10 @@ import (
 
 	"github.com/go-orz/orz"
 	"github.com/spf13/cobra"
-	"github.com/wybroot/pikaw/internal"
-	"github.com/wybroot/pikaw/internal/config"
-	v0_0_13 "github.com/wybroot/pikaw/internal/migrate/v0_0_13"
-	"github.com/wybroot/pikaw/internal/vmclient"
+	"github.com/wybroot/alink/internal"
+	"github.com/wybroot/alink/internal/config"
+	v0_0_13 "github.com/wybroot/alink/internal/migrate/v0_0_13"
+	"github.com/wybroot/alink/internal/vmclient"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 
@@ -22,7 +22,7 @@ import (
 var (
 	configFile string
 	rootCmd    = &cobra.Command{
-		Use:   "pikaw-server",
+		Use:   "alink-server",
 		Short: "Alink 服务器监控系统",
 		Long:  `Alink 是一个轻量级的服务器监控系统，支持多探针部署和实时监控。`,
 		Run: func(cmd *cobra.Command, args []string) {
@@ -150,7 +150,7 @@ func runMigration(configPath string) {
 	}
 
 	fmt.Println()
-	fmt.Println("提示: 现在可以启动服务器: ./pikaw-server serve")
+	fmt.Println("提示: 现在可以启动服务器: ./alink-server serve")
 }
 
 // provideVMClient 提供 VictoriaMetrics 客户端

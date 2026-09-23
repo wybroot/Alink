@@ -1,8 +1,8 @@
 package collector
 
 import (
-	"github.com/wybroot/pikaw/internal/protocol"
 	"github.com/shirou/gopsutil/v4/net"
+	"github.com/wybroot/alink/internal/protocol"
 )
 
 // NetworkConnectionCollector 网络连接统计采集器

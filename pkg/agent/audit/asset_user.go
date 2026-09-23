@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/wybroot/pikaw/internal/protocol"
+	"github.com/wybroot/alink/internal/protocol"
 )
 
 // UserAssetsCollector 用户资产收集器

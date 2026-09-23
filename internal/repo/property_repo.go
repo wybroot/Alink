@@ -1,8 +1,8 @@
 package repo
 
 import (
-	"github.com/wybroot/pikaw/internal/models"
 	"github.com/go-orz/orz"
+	"github.com/wybroot/alink/internal/models"
 	"gorm.io/gorm"
 )
 

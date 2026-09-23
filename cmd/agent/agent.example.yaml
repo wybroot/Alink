@@ -1,5 +1,5 @@
 # Alink Agent 配置文件示例
-# 配置文件默认路径: ~/.pikaw/agent.yaml
+# 配置文件默认路径: ~/.alink/agent.yaml
 
 # 服务器配置
 server:

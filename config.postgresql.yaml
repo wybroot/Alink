@@ -2,15 +2,15 @@ database:
   enabled: true
   type: postgres
   postgres:
-    hostname: pikaw-postgresql
+    hostname: alink-postgresql
     port: 5432
-    username: pikaw
-    password: pikaw
-    database: pikaw
+    username: alink
+    password: alink
+    database: alink
   show_sql: false
 log:
   level: debug # 日志等级  debug,info,waring,error
-  filename: ./logs/pikaw.log
+  filename: ./logs/alink.log
 
 server:
   addr: "0.0.0.0:8080"

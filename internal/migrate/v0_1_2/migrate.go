@@ -3,7 +3,7 @@ package v0_1_2
 import (
 	"strings"
 
-	"github.com/wybroot/pikaw/internal/models"
+	"github.com/wybroot/alink/internal/models"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 )

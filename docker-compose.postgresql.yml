@@ -1,23 +1,23 @@
 services:
   postgresql:
     image: postgres:17
-    container_name: pikaw-postgresql
+    container_name: alink-postgresql
     environment:
-      POSTGRES_DB: pikaw
-      POSTGRES_USER: pikaw
-      POSTGRES_PASSWORD: pikaw
+      POSTGRES_DB: alink
+      POSTGRES_USER: alink
+      POSTGRES_PASSWORD: alink
     volumes:
       - ./data/postgresql:/var/lib/postgresql/data
     ports:
       - "127.0.0.1:5432:5432"
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U pikaw" ]
+      test: [ "CMD-SHELL", "pg_isready -U alink" ]
       interval: 10s
       timeout: 5s
       retries: 5
     restart: always
     networks:
-      - pikaw-network
+      - alink-network
   victoriametrics:
     image: victoriametrics/victoria-metrics:v1.131.0
     container_name: victoriametrics
@@ -31,10 +31,10 @@ services:
       - ./data/vmdata:/victoria-metrics-data
     restart: always
     networks:
-      - pikaw-network
-  pikaw:
-    image: wangyanbiao/pikaw:latest
-    container_name: pikaw-server
+      - alink-network
+  alink:
+    image: wangyanbiao/alink:latest
+    container_name: alink-server
     volumes:
       - ./config.yaml:/app/config.yaml
     # 开启 Geo 配置后打开下面的配置
@@ -51,9 +51,9 @@ services:
       - 127.0.0.11
       - 8.8.8.8
     networks:
-      - pikaw-network
+      - alink-network
 
 networks:
-  pikaw-network:
+  alink-network:
     driver: bridge
 

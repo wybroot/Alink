@@ -10,8 +10,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/wybroot/pikaw/internal/protocol"
-	"github.com/wybroot/pikaw/pkg/agent/utils"
+	"github.com/wybroot/alink/internal/protocol"
+	"github.com/wybroot/alink/pkg/agent/utils"
 	bolt "go.etcd.io/bbolt"
 )
 
@@ -38,7 +38,7 @@ type bufferedMessage struct {
 }
 
 func newOutboundBuffer() *outboundBuffer {
-	path := filepath.Join(utils.GetSafeHomeDir(), ".pikaw", outboundBufferDBName)
+	path := filepath.Join(utils.GetSafeHomeDir(), ".alink", outboundBufferDBName)
 	return &outboundBuffer{path: path}
 }
 

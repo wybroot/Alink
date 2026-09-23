@@ -12,10 +12,10 @@ services:
       - ./data/vmdata:/victoria-metrics-data
     restart: always
     networks:
-      - pikaw-network
-  pikaw:
-    image: wangyanbiao/pikaw:latest
-    container_name: pikaw-server
+      - alink-network
+  alink:
+    image: wangyanbiao/alink:latest
+    container_name: alink-server
     volumes:
       - ./config.yaml:/app/config.yaml
       - ./data:/app/data
@@ -30,10 +30,10 @@ services:
       - 127.0.0.11
       - 8.8.8.8
     networks:
-      - pikaw-network
+      - alink-network
 
 networks:
-  pikaw-network:
+  alink-network:
     driver: bridge
 
 

@@ -7,10 +7,10 @@ import (
 	"time"
 
 	"github.com/go-orz/cache"
-	"github.com/wybroot/pikaw/internal/assets"
-	"github.com/wybroot/pikaw/internal/models"
-	"github.com/wybroot/pikaw/internal/repo"
-	"github.com/wybroot/pikaw/pkg/version"
+	"github.com/wybroot/alink/internal/assets"
+	"github.com/wybroot/alink/internal/models"
+	"github.com/wybroot/alink/internal/repo"
+	"github.com/wybroot/alink/pkg/version"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 )

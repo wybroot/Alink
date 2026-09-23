@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/wybroot/pikaw/pkg/agent/utils"
 	"github.com/google/uuid"
+	"github.com/wybroot/alink/pkg/agent/utils"
 )
 
 // Manager 管理探针的唯一标识
@@ -30,16 +30,16 @@ func oldGetIDFilePath() string {
 		homeDir = "."
 	}
 
-	// 统一使用 ~/.pikaw/agent.id
-	return filepath.Join(homeDir, ".pikaw", "agent.id")
+	// 统一使用 ~/.alink/agent.id
+	return filepath.Join(homeDir, ".alink", "agent.id")
 }
 
 // GetIDFilePath 获取 ID 文件路径
 func GetIDFilePath() string {
 	// 获取用户主目录
 	var homeDir = utils.GetSafeHomeDir()
-	// 统一使用 ~/.pikaw/agent.id
-	return filepath.Join(homeDir, ".pikaw", "agent.id")
+	// 统一使用 ~/.alink/agent.id
+	return filepath.Join(homeDir, ".alink", "agent.id")
 }
 
 // Load 加载或生成探针 ID

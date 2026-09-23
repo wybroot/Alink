@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	"github.com/wybroot/pikaw/internal/models"
+	"github.com/wybroot/alink/internal/models"
 	"go.uber.org/zap"
 )
 
