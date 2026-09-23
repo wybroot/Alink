@@ -26,6 +26,28 @@ jobs:
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
           echo "当前版本: ${VERSION}"
 
+      # 安装构建工具
+      - name: 安装 make 和 upx
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y make upx-ucl
+
+      - name: 设置 Golang
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.26.0'
+
+      - name: 设置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 构建发布产物
+        run: make build-release VERSION="${{ steps.get_version.outputs.version }}"
+
+      - name: 打包发布产物
+        run: bash scripts/package-release.sh "${{ steps.get_version.outputs.version }}"
+
       # 生成更新日志
       - name: 生成更新日志
         id: changelog
@@ -47,13 +69,17 @@ jobs:
 
       # 创建 GitHub Release
       - name: 创建 Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           name: Release ${{ steps.get_version.outputs.version }}
           body_path: changelog.txt
           draft: false
           prerelease: false
           generate_release_notes: true  # 自动生成 release notes
+          fail_on_unmatched_files: true
+          overwrite_files: true
+          files: |
+            bin/release/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
