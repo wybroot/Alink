@@ -110,8 +110,6 @@ jobs:
             ${{ env.GHCR_REGISTRY }}/${{ env.GHCR_IMAGE }}
           tags: |
             type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
             type=raw,value=latest
 
       # 构建并推送 Docker 镜像
@@ -128,11 +126,9 @@ jobs:
           build-args: |
             VERSION=${{ env.VERSION }}
           cache-from: |
-            type=registry,ref=${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_IMAGE }}:cache
-            type=local,src=/tmp/.buildx-cache
+            type=gha
           cache-to: |
-            type=registry,ref=${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_IMAGE }}:cache,mode=max
-            type=local,dest=/tmp/.buildx-cache
+            type=gha,mode=max
 
       # 生成构建总结
       - name: 生成构建总结
