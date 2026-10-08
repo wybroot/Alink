@@ -17,7 +17,7 @@ import CompactResourceBar from '@portal/components/CompactResourceBar';
 import {formatBytes, formatSpeed, formatUptime} from '@/lib/format.ts';
 import CyberCard from "@portal/components/CyberCard.tsx";
 import {Link} from "react-router-dom";
-import {isExpired} from "@portal/utils/server.ts";
+import {getServerIpAddress, isExpired} from "@portal/utils/server.ts";
 import {cn} from "@/lib/utils.ts";
 
 interface AgentWithMetrics extends Agent {
@@ -72,6 +72,7 @@ const ServerCard: FC<ServerCardProps> = ({server}) => {
     const {upload, download} = calculateNetworkSpeed(server.metrics);
     const temperatures = getTemperatures(server.metrics);
     const netConn = server.metrics?.networkConnection;
+    const ipAddress = getServerIpAddress(server.metrics);
     const traffic = server.trafficStats;
     const trafficUsagePercent = traffic?.enabled && traffic.limit > 0
         ? Math.min(100, (traffic.used / traffic.limit) * 100)
@@ -96,6 +97,13 @@ const ServerCard: FC<ServerCardProps> = ({server}) => {
                                 <span className="h-2 w-px bg-slate-300 dark:bg-slate-700"></span>
                                 <span>{server.arch}</span>
                             </div>
+                            {ipAddress && (
+                                <div
+                                    className="mt-1 flex min-w-0 items-center gap-1 font-mono text-xs text-slate-500 dark:text-slate-400">
+                                    <Network className="h-3 w-3 shrink-0"/>
+                                    <span className="truncate" title={ipAddress}>{ipAddress}</span>
+                                </div>
+                            )}
                         </div>
                         {server.tags && server.tags.length > 0 && (
                             <div className="flex gap-1 flex-wrap justify-end">

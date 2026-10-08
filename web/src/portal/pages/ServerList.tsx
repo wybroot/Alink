@@ -25,7 +25,7 @@ import StatBlock from "@portal/components/StatBlock.tsx";
 import ServerCard from "@portal/components/ServerCard.tsx";
 import NetworkStatCard from "@portal/components/NetworkStatCard.tsx";
 import {formatBytes, formatSpeed, formatTime, formatUptime} from "@/lib/format.ts";
-import {isExpired} from "@portal/utils/server.ts";
+import {getServerIpAddress, isExpired} from "@portal/utils/server.ts";
 import {LoadingSpinner} from "@portal/components/LoadingSpinner.tsx";
 
 interface AgentWithMetrics extends Agent {
@@ -307,6 +307,7 @@ const ServerList = () => {
                                 const {upload, download} = calculateNetworkSpeed(server.metrics);
                                 const temperatures = getTemperatures(server.metrics);
                                 const netConn = server.metrics?.networkConnection;
+                                const ipAddress = getServerIpAddress(server.metrics);
                                 const traffic = server.trafficStats;
                                 const trafficUsagePercent = traffic?.enabled && traffic.limit > 0
                                     ? Math.min(100, (traffic.used / traffic.limit) * 100)
@@ -342,6 +343,13 @@ const ServerList = () => {
                                                         <span className="h-2 w-px bg-slate-300 dark:bg-slate-700"></span>
                                                         <span>{server.arch}</span>
                                                     </div>
+                                                    {ipAddress && (
+                                                        <div
+                                                            className="flex min-w-0 items-center gap-1 font-mono text-xs text-slate-500 dark:text-slate-400">
+                                                            <Network className="h-3 w-3 shrink-0"/>
+                                                            <span className="truncate" title={ipAddress}>{ipAddress}</span>
+                                                        </div>
+                                                    )}
                                                     {isOnline && server.metrics?.host && (
                                                         <div className="flex items-center gap-3 text-xs font-mono mt-1">
                                                             <div
